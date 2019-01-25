@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/TestEdou/TestDragDropScene.unity
+    guid: d39ba15e99c09b549aeceef93e3a3391
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: bd2d098524fee4a4bbee90fb86374507
   - enabled: 1
