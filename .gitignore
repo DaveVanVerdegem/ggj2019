@@ -1,0 +1,49 @@
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+Assets/AssetStoreTools*
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Thumbs.db.meta
+thumbs.db
+thumbs.db.meta
+Builds/
+*.pdb
+Assets/Code/General/ConsoleGroups.asset
+WwiseUnityIntegration_Windows_Src.zip
+WwiseUnityIntegration_Mac_Src.zip
+Assets/Data/Video/Flotsam_Trailer_TempMusic.mp4
+Assets/Data/Video/Flotsam_Trailer_TempMusic.mp4.meta
+.vs/
+*.fbm.meta
+Assets/Data/Video.meta
+Assets/StreamingAssets/DebugExports.meta
+*.mov
+*.mov.meta
