@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "GGJ2019/Action Properties")]
+[CreateAssetMenu(menuName = "GGJ2019/Action")]
 public class ActionProperties : ScriptableObject
 {
 	#region Inspector Fields

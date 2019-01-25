@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+	#region Inspector Fields
+	/// <summary>
+	/// Action queue to currently use for this monster.
+	/// </summary>
+	[Tooltip("Action queue to currently use for this monster.")]
+	[SerializeField]
+	private ActionQueueProperties _actionQueue = null;
+	#endregion
+
 	#region Life Cycle
 	// Start is called before the first frame update
 	private void Start()
