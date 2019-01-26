@@ -357,7 +357,62 @@ PrefabInstance:
         type: 3}
       propertyPath: log
       value: 
-      objectReference: {fileID: 1355266104}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988154067682925452, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: minDistanceForSwipe
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988154067682925452, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: swipeDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936037062635161531, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: minDistanceForSwipe
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936037062635161531, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: swipeDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449713689559222353, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359695625280505472, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: minDistanceForSwipe
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1359695625280505472, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: swipeDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3470022893124215717, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765144615536056744, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: minDistanceForSwipe
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765144615536056744, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: swipeDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894236166987207100, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8628210929439356038, guid: f9655831422af9047ac80a3219c6b486,
         type: 3}
       propertyPath: m_Mesh
@@ -843,28 +898,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355266102}
   m_CullTransparentMesh: 0
---- !u!1 &1484766945 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1023708859665812949, guid: f9655831422af9047ac80a3219c6b486,
-    type: 3}
-  m_PrefabInstance: {fileID: 369925712}
-  m_PrefabAsset: {fileID: 0}
---- !u!58 &1484766947
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484766945}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1}
-  serializedVersion: 2
-  m_Radius: 5
 --- !u!4 &1484766951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 614638918953838516, guid: f9655831422af9047ac80a3219c6b486,
