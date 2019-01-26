@@ -151,6 +151,18 @@ PolygonCollider2D:
       - {x: 6.5205684, y: -4.6074505}
       - {x: 7.464867, y: -1.2394487}
       - {x: 4.9485917, y: 2.1346633}
+--- !u!114 &195385005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 163717374277235401, guid: f9655831422af9047ac80a3219c6b486,
+    type: 3}
+  m_PrefabInstance: {fileID: 5249372365836797824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195385003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 360c84f05a14a794198ac394e2d0273f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &195385007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +226,7 @@ MonoBehaviour:
   monster: {fileID: 195385003}
   actionQueueProperties: {fileID: 11400000, guid: cca2d44e07bc049d8b7ca95580c84d99,
     type: 2}
+  foodCount: 2
 --- !u!61 &328189606
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -249,6 +262,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 550299888}
+  - component: {fileID: 550299889}
   m_Layer: 0
   m_Name: Minigames
   m_TagString: Untagged
@@ -271,6 +285,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &550299889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550299887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfc0e497f5e5649b9b18b0751355a011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster: {fileID: 195385005}
 --- !u!1 &1523361389
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,8 +683,13 @@ PrefabInstance:
         type: 3}
       propertyPath: _actionQueue
       value: 
-      objectReference: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726,
+      objectReference: {fileID: 11400000, guid: cca2d44e07bc049d8b7ca95580c84d99,
         type: 2}
+    - target: {fileID: 8628210929439356038, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9655831422af9047ac80a3219c6b486, type: 3}
 --- !u!1001 &8269014807456735994
