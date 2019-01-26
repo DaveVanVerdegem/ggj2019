@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TapFace
   m_EditorClassIdentifier: 
   ActionType: 1
-  HotSpot: 1
+  HotSpotLocation: 1

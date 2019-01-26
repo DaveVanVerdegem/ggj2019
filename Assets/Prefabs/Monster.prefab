@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionQueue: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726, type: 2}
+  _hotSpotTummy:
+    HotSpotLocation: 3
+    Animation: 
+  MonsterEscalationLevel: 0
 --- !u!114 &5055908188725891836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,7 +75,7 @@ GameObject:
   - component: {fileID: 6635554272372344645}
   - component: {fileID: 602015555414344008}
   m_Layer: 0
-  m_Name: TapPoint01
+  m_Name: HotSpotTeeth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +150,7 @@ GameObject:
   - component: {fileID: 9002760104902194217}
   - component: {fileID: 7881347343871762153}
   m_Layer: 0
-  m_Name: TapPoint02
+  m_Name: HotSpotTail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
