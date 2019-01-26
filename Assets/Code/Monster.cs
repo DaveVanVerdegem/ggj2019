@@ -1,6 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+#region Enums
+public enum EscalationLevel
+{
+	None = 0,
+	Low = 1,
+	Medium = 2,
+	High = 3
+}
+#endregion
 
 public class Monster : MonoBehaviour
 {
@@ -11,32 +22,57 @@ public class Monster : MonoBehaviour
 	[Tooltip("Action queue to currently use for this monster.")]
 	[SerializeField]
 	private ActionQueueProperties _actionQueue = null;
+
+	[Header("Hot Spots")]
+	/// <summary>
+	/// Hot spot for the tummy of the monster.
+	/// </summary>
+	[Tooltip("Hot spot for the tummy of the monster.")]
+	[SerializeField]
+	private HotSpot _hotSpotTummy = null;
+	#endregion
+
+	#region Properties
+	/// <summary>
+	/// Escalation level where the monster is currently at.
+	/// </summary>
+	public EscalationLevel MonsterEscalationLevel = 0;
 	#endregion
 
 	#region Fields
 	/// <summary>
-	/// Attached rumbler.
-	/// </summary>
-	private Rumbler _rumbler = null;
-
-	/// <summary>
 	/// Timer for this monster.
 	/// </summary>
-	private Timer _timer = null;
-
-	/// <summary>
-	/// Timer to escalate rumbles.
-	/// </summary>
-	private Timer _rumbleTimer = null;
-
-	private int _rumbleEscalation = 0;
+	private Timer _actionTimer = null;
 
 	/// <summary>
 	/// Index of the current action the player needs to perform.
 	/// </summary>
 	private int _currentActionIndex = 0;
 
+	private HotSpot _currentlyActiveHotSpot = null;
+
+	#region Rumbler
+	/// <summary>
+	/// Attached rumbler.
+	/// </summary>
+	private Rumbler _rumbler = null;
+
+	/// <summary>
+	/// Timer to escalate rumbles.
+	/// </summary>
+	private Timer _rumbleTimer = null;
+
+	/// <summary>
+	/// The escalation level of the rumbling. Contained to 4 levels, where every escalation increases the amount of rumbling.
+	/// </summary>
+	private EscalationLevel _rumbleEscalation = 0;
+
+	/// <summary>
+	/// Time until the rumble get escalated.
+	/// </summary>
 	private float _timeBetweenRumbles = 0f;
+	#endregion
 	#endregion
 
 	#region Life Cycle
@@ -52,54 +88,81 @@ public class Monster : MonoBehaviour
 		_timeBetweenRumbles = _actionQueue.FailTimer * .25f;
 
 		// Start timers.
-		_timer = new Timer(_actionQueue.FailTimer);
+		_actionTimer = new Timer(_actionQueue.FailTimer);
 		_rumbleTimer = new Timer(_timeBetweenRumbles);
+
+		// Initialize.
+		UpdateActiveHotSpot();
+
+		DisplayActionToTake();
 	}
 
 	// Update is called once per frame
 	private void Update()
 	{
-		// Countdown timers.
-		if (_timer != null && _timer.CountDown())
-		{
-			Debug.Log("Timer ran out!", this);
-			_timer.Reset();
-			Escalate();
-		}
-
-		if (_rumbleTimer != null && _rumbleTimer.CountDown())
-		{
-			_rumbleEscalation++;
-
-			float rumbleDelay = 0f;
-
-			switch (_rumbleEscalation)
-			{
-				default:
-				case 0:
-					rumbleDelay = 999f;
-					break;
-
-				case 1:
-					rumbleDelay = 5f;
-					break;
-
-				case 2:
-					rumbleDelay = 2f;
-					break;
-
-				case 3:
-					rumbleDelay = 1f;
-					break;
-			}
-
-			_rumbler.StartRumbling(rumbleDelay);
-			_rumbleTimer = new Timer(_timeBetweenRumbles);
-		}
+		ProgressTimers();
 	}
 	#endregion
 
-	#region Methods
+	#region Game Loop
+	public void WinGame()
+	{
+		Debug.Log("<color=green><b>Won the game!</b></color>");
+	}
+
+	public void LoseGame()
+	{
+		Debug.Log("<color=red><b>Game over!</b></color>");
+	}
+
+	/// <summary>
+	/// Escalate the monster to a new danger level.
+	/// </summary>
+	public void Escalate()
+	{
+		Debug.Log("Monster escalates!", this);
+
+		MonsterEscalationLevel++;
+
+		if ((int)MonsterEscalationLevel > Enum.GetNames(typeof(EscalationLevel)).Length)
+		{
+			LoseGame();
+		}
+	}
+
+	public void Iterate()
+	{
+		_currentActionIndex++;
+
+		UpdateActiveHotSpot();
+
+		// Reset the action and rumble timer.
+		_actionTimer.Reset();
+		_rumbleTimer.Reset();
+
+		if (_currentActionIndex >= _actionQueue.Actions.Count)
+		{
+			// Finished with the queue!
+			Debug.Log("Finished with the queue!", this);
+
+			// Clear the action timer.
+			_actionTimer = null;
+			_currentActionIndex = 0;
+
+			// Stop the rumble timer.
+			_rumbleTimer = null;
+			_rumbleEscalation = 0;
+			_rumbler.StopTheRumble();
+
+			WinGame();
+			return;
+		}
+
+		DisplayActionToTake();
+	}
+	#endregion
+
+	#region Input Methods
 	/// <summary>
 	/// Registers an action taken on the monster.
 	/// </summary>
@@ -117,7 +180,7 @@ public class Monster : MonoBehaviour
 		if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot)
 		{
 			// Succes!
-			_timer.Reset();
+			_actionTimer.Reset();
 			Iterate();
 		}
 		else
@@ -125,27 +188,91 @@ public class Monster : MonoBehaviour
 			Escalate();
 		}
 	}
+	#endregion
 
+	#region Visual Methods
 	/// <summary>
-	/// Escalate the monster to a new danger level.
+	/// Activate any visuals for the hot spots here.
 	/// </summary>
-	public void Escalate()
+	public void IndicateHotSpot(HotSpot hotSpot)
 	{
-		Debug.Log("Monster escalates!", this);
+		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotLocation), this);
+
+		throw new NotImplementedException(string.Format("Indication of hot spots not implemented yet."));
 	}
 
-	public void Iterate()
+	public void HideHotSpotIndication(HotSpot hotSpot)
 	{
-		_currentActionIndex++;
+		throw new NotImplementedException(string.Format("Hiding of hot spots not implemented yet."));
+	}
+	#endregion
 
-		if (_currentActionIndex >= _actionQueue.Actions.Count)
+	#region Methods
+	/// <summary>
+	/// Evaluates and progresses the timers.
+	/// </summary>
+	private void ProgressTimers()
+	{
+		// Countdown timers.
+		if (_actionTimer != null && _actionTimer.CountDown())
 		{
-			// Finished with the queue!
-			Debug.Log("Finished with the queue!", this);
-
-			_timer = null;
-			_currentActionIndex = 0;
+			Debug.Log("Timer ran out!", this);
+			_actionTimer.Reset();
+			Escalate();
 		}
+
+		if (_rumbleTimer != null && _rumbleTimer.CountDown())
+		{
+			_rumbleEscalation++;
+
+			float rumbleDelay = 0f;
+
+			switch (_rumbleEscalation)
+			{
+				default:
+				case 0:
+					rumbleDelay = 999f;
+					break;
+
+				case (EscalationLevel)1:
+					rumbleDelay = 5f;
+					break;
+
+				case (EscalationLevel)2:
+					rumbleDelay = 2f;
+					break;
+
+				case (EscalationLevel)3:
+					rumbleDelay = 1f;
+					break;
+			}
+
+			_rumbler.StartRumbling(rumbleDelay);
+			_rumbleTimer = new Timer(_timeBetweenRumbles);
+		}
+	}
+
+	public void UpdateActiveHotSpot()
+	{
+		HotSpot newHotSpot = ReturnMatchingHotSpot(ReturnCurrentActionProperties().HotSpotLocation);
+
+		if (_currentlyActiveHotSpot == newHotSpot)
+			return;
+
+		if (_currentlyActiveHotSpot != null)
+			HideHotSpotIndication(_currentlyActiveHotSpot);
+
+		// Set new hot spot.
+		_currentlyActiveHotSpot = newHotSpot;
+		IndicateHotSpot(_currentlyActiveHotSpot);
+	}
+	#endregion
+
+	#region Debug Methods
+	public void DisplayActionToTake()
+	{
+		ActionProperties actionProperties = ReturnCurrentActionProperties();
+		Debug.Log(string.Format("You need to {0} on the monsters {1}.", actionProperties.ActionType, actionProperties.HotSpotLocation), this);
 	}
 	#endregion
 
@@ -156,6 +283,19 @@ public class Monster : MonoBehaviour
 			return null;
 
 		return _actionQueue.Actions[_currentActionIndex];
+	}
+
+	public HotSpot ReturnMatchingHotSpot(HotSpotLocation hotSpotLocation)
+	{
+		switch (hotSpotLocation)
+		{
+			default:
+				throw new NotImplementedException(string.Format("A hot spot for {0} hasn't been set yet.", hotSpotLocation));
+				return null;
+
+			case HotSpotLocation.Tummy:
+				return _hotSpotTummy;
+		}
 	}
 	#endregion
 }

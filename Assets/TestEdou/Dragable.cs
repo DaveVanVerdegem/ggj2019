@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class Dragable : MonoBehaviour
 {
     public Color HighlightColor;
     Color originalColor;
-    CircleCollider2D col;
+    Collider2D col;
     SpriteRenderer spr;
     // Start is called before the first frame update
     void Start()
     {
-        col = GetComponent<CircleCollider2D>();
+        col = GetComponent<Collider2D>();
         spr= GetComponent<SpriteRenderer>();
         originalColor = spr.color;
     }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TapTail
   m_EditorClassIdentifier: 
   ActionType: 1
-  HotSpot: 4
+  HotSpotLocation: 4
