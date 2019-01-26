@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(CircleCollider2D))]
 public class Rubable : MonoBehaviour
 {
     [Tooltip("Optional log output")]
