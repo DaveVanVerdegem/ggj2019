@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum HotSpot
+public enum HotSpotLocation
 {
 	None = 0,
-	Face = 1,
+	Teeth = 1,
 	Back = 2,
 	Tummy = 3,
 	Tail = 4
@@ -26,7 +26,7 @@ public class InputTrigger : MonoBehaviour
 	/// Hot spot that this trigger activates.
 	/// </summary>
 	[Tooltip("Hot spot that this trigger activates.")]
-	public HotSpot HotSpot = HotSpot.None;
+	public HotSpotLocation HotSpot = HotSpotLocation.None;
 	#endregion
 
 	#region Fields
