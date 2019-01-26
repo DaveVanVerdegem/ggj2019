@@ -105,7 +105,7 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	/// <param name="actionType">Type of input used.</param>
 	/// <param name="hotSpot">Hot spot where the input was used on.</param>
-	public void RegisterAction(ActionType actionType, HotSpot hotSpot)
+	public void RegisterAction(ActionType actionType, HotSpotLocation hotSpot)
 	{
 		Debug.Log(string.Format("Registering input of {0} at {1}.", actionType, hotSpot), this);
 
@@ -114,7 +114,7 @@ public class Monster : MonoBehaviour
 		if (actionProperties == null)
 			return;
 
-		if (actionProperties.ActionType == actionType && actionProperties.HotSpot == hotSpot)
+		if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot)
 		{
 			// Succes!
 			_timer.Reset();

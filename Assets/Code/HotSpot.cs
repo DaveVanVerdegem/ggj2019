@@ -2,15 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "GGJ2019/Action")]
-public class ActionProperties : ScriptableObject
+[System.Serializable]
+public class HotSpot
 {
 	#region Inspector Fields
-	/// <summary>
-	/// Type of action to use.
-	/// </summary>
-	[Tooltip("Type of action to use.")]
-	public ActionType ActionType = ActionType.None;
 
 	/// <summary>
 	/// Hot spot location to use for this action.
