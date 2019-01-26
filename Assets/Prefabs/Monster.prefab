@@ -86,6 +86,8 @@ GameObject:
   - component: {fileID: 4512195000918996668}
   - component: {fileID: 8416988733803374022}
   - component: {fileID: 716584780900551524}
+  - component: {fileID: 3936037062635161531}
+  - component: {fileID: 4449713689559222353}
   m_Layer: 0
   m_Name: HotSpotBack
   m_TagString: Untagged
@@ -132,6 +134,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3936037062635161531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592884917943994983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef65b8782594d48428f10357f29cb48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: {fileID: 0}
+  minDelayBetweenSwipes: 0.05
+  maxDelayBetweenSwipes: 0.5
+  minDistanceForSwipe: 450
+  swipeDrag: 0
+--- !u!60 &4449713689559222353
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592884917943994983}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.49255943, y: 1.0985116}
+      - {x: -4.866897, y: -0.8484951}
+      - {x: -5.1439524, y: -2.262065}
+      - {x: 5.6118827, y: -1.9911575}
+      - {x: 3.9556646, y: -0.035773516}
 --- !u!1 &3768579842588721055
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,8 +192,8 @@ GameObject:
   - component: {fileID: 6635554272372344645}
   - component: {fileID: 5829418930777637265}
   - component: {fileID: 602015555414344008}
-  - component: {fileID: 6648995612906513429}
   - component: {fileID: 1988154067682925452}
+  - component: {fileID: 6648995612906513429}
   m_Layer: 0
   m_Name: HotSpotTeeth
   m_TagString: Untagged
@@ -191,6 +240,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1988154067682925452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3768579842588721055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef65b8782594d48428f10357f29cb48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: {fileID: 0}
+  minDelayBetweenSwipes: 0.05
+  maxDelayBetweenSwipes: 0.5
+  minDistanceForSwipe: 450
+  swipeDrag: 0
 --- !u!60 &6648995612906513429
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -221,23 +287,6 @@ PolygonCollider2D:
       - {x: -2.0018291, y: -1.162528}
       - {x: 1.2948072, y: -1.1625285}
       - {x: 1.940887, y: 0.7096629}
---- !u!114 &1988154067682925452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3768579842588721055}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef65b8782594d48428f10357f29cb48d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  log: {fileID: 0}
-  minDelayBetweenSwipes: 0.05
-  maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 450
-  swipeDrag: 0
 --- !u!1 &5397972347886808354
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +329,8 @@ GameObject:
   - component: {fileID: 2396008521008318013}
   - component: {fileID: 7410980724269919799}
   - component: {fileID: 8509386918818627280}
+  - component: {fileID: 1359695625280505472}
+  - component: {fileID: 3470022893124215717}
   m_Layer: 0
   m_Name: HotSpotTummy
   m_TagString: Untagged
@@ -326,6 +377,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1359695625280505472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787416061740255642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef65b8782594d48428f10357f29cb48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: {fileID: 0}
+  minDelayBetweenSwipes: 0.05
+  maxDelayBetweenSwipes: 0.5
+  minDistanceForSwipe: 450
+  swipeDrag: 0
+--- !u!60 &3470022893124215717
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787416061740255642}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -3.5504117, y: 1.2612557}
+      - {x: -3.2900848, y: -0.7318082}
+      - {x: 5.7350225, y: -0.70607233}
+      - {x: 6.613018, y: 0.978158}
 --- !u!1 &7886621182034738264
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +434,8 @@ GameObject:
   - component: {fileID: 9002760104902194217}
   - component: {fileID: 3321324004226680836}
   - component: {fileID: 7881347343871762153}
+  - component: {fileID: 1765144615536056744}
+  - component: {fileID: 6894236166987207100}
   m_Layer: 0
   m_Name: HotSpotTail
   m_TagString: Untagged
@@ -383,6 +482,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1765144615536056744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886621182034738264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef65b8782594d48428f10357f29cb48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: {fileID: 0}
+  minDelayBetweenSwipes: 0.05
+  maxDelayBetweenSwipes: 0.5
+  minDistanceForSwipe: 450
+  swipeDrag: 0
+--- !u!60 &6894236166987207100
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886621182034738264}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.6471148, y: 1.9265026}
+      - {x: 0.3357525, y: 1.1840477}
+      - {x: 0.9306493, y: -1.1693236}
+      - {x: 3.109932, y: 1.5329763}
+      - {x: 2.1091852, y: 4.941531}
 --- !u!1 &8001608228658256180
 GameObject:
   m_ObjectHideFlags: 0

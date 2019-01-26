@@ -29,6 +29,10 @@ public class InputTrigger : MonoBehaviour
 	//public HotSpotLocation HotSpot = HotSpotLocation.None;
 	#endregion
 
+	#region Properties
+
+	#endregion
+
 	#region Fields
 	/// <summary>
 	/// Attached monster component.
