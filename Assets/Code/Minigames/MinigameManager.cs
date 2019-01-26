@@ -7,12 +7,12 @@ public class MinigameManager : MonoBehaviour
     public Monster monster;
     public IMinigame[] minigames;
 
-    private int currentMinigameIndex;
+    private int currentMinigameIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        monster.SetCurrentActionProperties(minigames[currentMinigameIndex].GetActionQueueProperties());
     }
 
     // Update is called once per frame
