@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360c84f05a14a794198ac394e2d0273f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hotSpotIndicatorPrefab: {fileID: 7275703153782066603, guid: 6e31a859100a15f4ba713a9710490d16,
+    type: 3}
   _actionQueue: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726, type: 2}
   _hotSpotTeeth:
     HotSpotHelper: {fileID: 5829418930777637265}

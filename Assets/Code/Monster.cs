@@ -15,15 +15,22 @@ public enum EscalationLevel
 
 public class Monster : MonoBehaviour
 {
-	#region Inspector Fields
-	/// <summary>
-	/// Action queue to currently use for this monster.
-	/// </summary>
-	[Tooltip("Action queue to currently use for this monster.")]
-	[SerializeField]
-	private ActionQueueProperties _actionQueue = null;
+    #region Inspector Fields
+    /// <summary>
+    /// Prefab to indicate the current hotspot.
+    /// </summary>
+    [Tooltip("Prefab to indicate the current hotspot.")]
+    [SerializeField]
+    private Transform _hotSpotIndicatorPrefab = null;
 
-	[Header("Hot Spots")]
+    /// <summary>
+    /// Action queue to currently use for this monster.
+    /// </summary>
+    [Tooltip("Action queue to currently use for this monster.")]
+    [SerializeField]
+    private ActionQueueProperties _actionQueue = null;
+
+    [Header("Hot Spots")]
 	/// <summary>
 	/// Hot spot for the teeth of the monster.
 	/// </summary>
@@ -73,13 +80,14 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	private int _currentActionIndex = 0;
 
-	private HotSpot _currentlyActiveHotSpot = null;
+    private HotSpot _currentlyActiveHotSpot = null;
+    private Transform _currentlyActiveHotSpotIndicator = null;
 
-	#region Rumbler
-	/// <summary>
-	/// Attached rumbler.
-	/// </summary>
-	private Rumbler _rumbler = null;
+    #region Rumbler
+    /// <summary>
+    /// Attached rumbler.
+    /// </summary>
+    private Rumbler _rumbler = null;
 
 	/// <summary>
 	/// Timer to escalate rumbles.
@@ -221,15 +229,13 @@ public class Monster : MonoBehaviour
 	{
 		if (hotSpot == null)
 			return;
-
 		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotHelper.HotSpotLocation), this);
-
-		Debug.LogWarning(string.Format("Indication of hot spots not implemented yet."));
-	}
+        _currentlyActiveHotSpotIndicator=Instantiate<Transform>(_hotSpotIndicatorPrefab, hotSpot.HotSpotHelper.transform.position, Quaternion.Euler(  _hotSpotIndicatorPrefab.eulerAngles));
+    }
 
 	public void HideHotSpotIndication(HotSpot hotSpot)
 	{
-		Debug.LogWarning(string.Format("Hiding of hot spots not implemented yet."));
+        Destroy(_currentlyActiveHotSpotIndicator);
 	}
 	#endregion
 
