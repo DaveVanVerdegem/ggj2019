@@ -1,0 +1,111 @@
+
+Monster.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Monster/Monster_Arm
+  rotate: false
+  xy: 306, 1047
+  size: 576, 197
+  orig: 576, 197
+  offset: 0, 0
+  index: -1
+Monster/Monster_Bek
+  rotate: false
+  xy: 1230, 1739
+  size: 522, 273
+  orig: 522, 273
+  offset: 0, 0
+  index: -1
+Monster/Monster_Buik
+  rotate: false
+  xy: 2, 1246
+  size: 1226, 766
+  orig: 1226, 766
+  offset: 0, 0
+  index: -1
+Monster/Monster_Hand
+  rotate: false
+  xy: 1754, 1880
+  size: 248, 132
+  orig: 248, 132
+  offset: 0, 0
+  index: -1
+Monster/Monster_Hoofd
+  rotate: false
+  xy: 1230, 1363
+  size: 277, 374
+  orig: 277, 374
+  offset: 0, 0
+  index: -1
+Monster/Monster_Neus
+  rotate: false
+  xy: 768, 983
+  size: 81, 62
+  orig: 81, 62
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Boos
+  rotate: false
+  xy: 1230, 1258
+  size: 275, 103
+  orig: 275, 103
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Open
+  rotate: true
+  xy: 1509, 1488
+  size: 249, 100
+  orig: 249, 100
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Pupils
+  rotate: false
+  xy: 554, 846
+  size: 191, 40
+  orig: 191, 40
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Toe
+  rotate: false
+  xy: 884, 1144
+  size: 279, 100
+  orig: 279, 100
+  offset: 0, 0
+  index: -1
+Monster/Monster_Oor
+  rotate: false
+  xy: 306, 448
+  size: 180, 110
+  orig: 180, 110
+  offset: 0, 0
+  index: -1
+Monster/Monster_Schouder
+  rotate: false
+  xy: 306, 560
+  size: 246, 326
+  orig: 246, 326
+  offset: 0, 0
+  index: -1
+Monster/Monster_Staart
+  rotate: false
+  xy: 2, 282
+  size: 302, 962
+  orig: 302, 962
+  offset: 0, 0
+  index: -1
+Monster/Monster_Tanden_Onder
+  rotate: false
+  xy: 306, 888
+  size: 460, 157
+  orig: 460, 157
+  offset: 0, 0
+  index: -1
+Monster/Monster_Voet
+  rotate: false
+  xy: 2, 2
+  size: 274, 278
+  orig: 274, 278
+  offset: 0, 0
+  index: -1
