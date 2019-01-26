@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(PolygonCollider2D))]
 public class Swipeable : MonoBehaviour
 {
 	#region Inspector Fields
@@ -25,7 +25,7 @@ public class Swipeable : MonoBehaviour
 	/// <summary>
 	/// Collider attached to this object.
 	/// </summary>
-	private Collider2D _collider = null;
+	private PolygonCollider2D _collider = null;
 
 	private float distanceSwiped;
 	private int swipeCount;
@@ -43,7 +43,7 @@ public class Swipeable : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
-		_collider = GetComponent<Collider2D>();
+		_collider = GetComponent<PolygonCollider2D>();
 		distanceSwiped = 0;
 		swipeCount = 0;
 		sinceLastSwipe = Time.time;

@@ -348,6 +348,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 6648995612906513429, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1988154067682925452, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: log
+      value: 
+      objectReference: {fileID: 1355266104}
+    - target: {fileID: 8628210929439356038, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9655831422af9047ac80a3219c6b486, type: 3}
 --- !u!1001 &565868416
@@ -834,23 +849,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 369925712}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1484766946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484766945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef65b8782594d48428f10357f29cb48d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  log: {fileID: 1355266104}
-  minDelayBetweenSwipes: 0.05
-  maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 150
-  swipeDrag: 0
 --- !u!58 &1484766947
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -867,36 +865,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -1}
   serializedVersion: 2
   m_Radius: 5
---- !u!60 &1484766948
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484766945}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -6.0395026, y: -3.1245384}
-      - {x: -8.095346, y: -2.5081902}
-      - {x: -7.2165074, y: -4.84149}
-      - {x: -3.8497758, y: -4.7310104}
-      - {x: -2.8236327, y: -2.7843866}
 --- !u!4 &1484766951 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 614638918953838516, guid: f9655831422af9047ac80a3219c6b486,
