@@ -24,6 +24,20 @@ public class Monster : MonoBehaviour
     private Transform _hotSpotIndicatorPrefab = null;
 
     /// <summary>
+    /// Angry audio clips
+    /// </summary>
+    [Tooltip("Angry audio clips")]
+    [SerializeField]
+    private RandomAudioClip _angrySound = null;
+
+    /// <summary>
+    /// Happy audio clips
+    /// </summary>
+    [Tooltip("Happy audio clips")]
+    [SerializeField]
+    private RandomAudioClip _happySound = null;
+
+    /// <summary>
     /// Action queue to currently use for this monster.
     /// </summary>
     [Tooltip("Action queue to currently use for this monster.")]
@@ -151,7 +165,8 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	public void Escalate()
 	{
-		MonsterEscalationLevel++;
+        _angrySound.PlayRandomAudioClip();
+        MonsterEscalationLevel++;
 
 		Debug.Log(string.Format("Monster escalates! It is now at level {0}.", MonsterEscalationLevel), this);
 
