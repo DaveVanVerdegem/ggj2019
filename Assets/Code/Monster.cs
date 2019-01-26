@@ -143,11 +143,11 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	public void Escalate()
 	{
-		Debug.Log("Monster escalates!", this);
-
 		MonsterEscalationLevel++;
 
-		if ((int)MonsterEscalationLevel > Enum.GetNames(typeof(EscalationLevel)).Length)
+		Debug.Log(string.Format("Monster escalates! It is now at level {0}.", MonsterEscalationLevel), this);
+
+		if ((int)MonsterEscalationLevel >= Enum.GetNames(typeof(EscalationLevel)).Length)
 		{
 			LoseGame();
 		}
@@ -219,6 +219,9 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	public void IndicateHotSpot(HotSpot hotSpot)
 	{
+		if (hotSpot == null)
+			return;
+
 		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotHelper.HotSpotLocation), this);
 
 		Debug.LogWarning(string.Format("Indication of hot spots not implemented yet."));
@@ -226,7 +229,7 @@ public class Monster : MonoBehaviour
 
 	public void HideHotSpotIndication(HotSpot hotSpot)
 	{
-		throw new NotImplementedException(string.Format("Hiding of hot spots not implemented yet."));
+		Debug.LogWarning(string.Format("Hiding of hot spots not implemented yet."));
 	}
 	#endregion
 
@@ -277,7 +280,8 @@ public class Monster : MonoBehaviour
 
 	public void UpdateActiveHotSpot()
 	{
-		HotSpot newHotSpot = ReturnMatchingHotSpot(ReturnCurrentActionProperties().HotSpotLocation);
+		ActionProperties actionProperties = ReturnCurrentActionProperties();
+		HotSpot newHotSpot = (actionProperties == null) ? null : ReturnMatchingHotSpot(ReturnCurrentActionProperties().HotSpotLocation);
 
 		if (_currentlyActiveHotSpot == newHotSpot)
 			return;
