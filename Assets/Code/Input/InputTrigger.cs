@@ -22,11 +22,11 @@ public enum ActionType
 public class InputTrigger : MonoBehaviour
 {
 	#region Inspector Fields
-	/// <summary>
-	/// Hot spot that this trigger activates.
-	/// </summary>
-	[Tooltip("Hot spot that this trigger activates.")]
-	public HotSpotLocation HotSpot = HotSpotLocation.None;
+	///// <summary>
+	///// Hot spot that this trigger activates.
+	///// </summary>
+	//[Tooltip("Hot spot that this trigger activates.")]
+	//public HotSpotLocation HotSpot = HotSpotLocation.None;
 	#endregion
 
 	#region Fields
@@ -34,6 +34,11 @@ public class InputTrigger : MonoBehaviour
 	/// Attached monster component.
 	/// </summary>
 	private Monster _monster = null;
+
+	/// <summary>
+	/// Attached hot spot helper.
+	/// </summary>
+	private HotSpotHelper _hotSpotHelper = null;
 	#endregion
 
 	#region Life Cycle
@@ -44,6 +49,8 @@ public class InputTrigger : MonoBehaviour
 
 		if (_monster == null)
 			Debug.LogWarning("No monster component found.", this);
+
+		_hotSpotHelper = GetComponent<HotSpotHelper>();
 	}
 
 	// Update is called once per frame
@@ -55,7 +62,7 @@ public class InputTrigger : MonoBehaviour
 	#region Methods
 	public void TriggerInput(ActionType inputType)
 	{
-		_monster.RegisterAction(inputType, HotSpot);
+		_monster.RegisterAction(inputType, _hotSpotHelper.HotSpotLocation);
 	}
 	#endregion
 

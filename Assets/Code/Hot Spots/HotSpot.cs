@@ -7,10 +7,10 @@ public class HotSpot
 {
 	#region Inspector Fields
 	/// <summary>
-	/// Hot spot location to use for this action.
+	/// Helper to manage this hot spot.
 	/// </summary>
-	[Tooltip("Hot spot location to use for this action.")]
-	public HotSpotLocation HotSpotLocation = HotSpotLocation.None;
+	[Tooltip("Helper to manage this hot spot.")]
+	public HotSpotHelper HotSpotHelper = null;
 
 	/// <summary>
 	/// Name of the animation to play.

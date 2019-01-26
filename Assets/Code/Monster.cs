@@ -25,17 +25,40 @@ public class Monster : MonoBehaviour
 
 	[Header("Hot Spots")]
 	/// <summary>
+	/// Hot spot for the teeth of the monster.
+	/// </summary>
+	[Tooltip("Hot spot for the teeth of the monster.")]
+	[SerializeField]
+	private HotSpot _hotSpotTeeth = null;
+
+	/// <summary>
+	/// Hot spot for the back of the monster.
+	/// </summary>
+	[Tooltip("Hot spot for the back of the monster.")]
+	[SerializeField]
+	private HotSpot _hotSpotBack = null;
+
+	/// <summary>
 	/// Hot spot for the tummy of the monster.
 	/// </summary>
 	[Tooltip("Hot spot for the tummy of the monster.")]
 	[SerializeField]
 	private HotSpot _hotSpotTummy = null;
+
+	/// <summary>
+	/// Hot spot for the tail of the monster.
+	/// </summary>
+	[Tooltip("Hot spot for the tail of the monster.")]
+	[SerializeField]
+	private HotSpot _hotSpotTail = null;
 	#endregion
 
 	#region Properties
+	[Header("Debug")]
 	/// <summary>
 	/// Escalation level where the monster is currently at.
 	/// </summary>
+	[HideInInspector]
 	public EscalationLevel MonsterEscalationLevel = 0;
 	#endregion
 
@@ -196,9 +219,9 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	public void IndicateHotSpot(HotSpot hotSpot)
 	{
-		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotLocation), this);
+		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotHelper.HotSpotLocation), this);
 
-		throw new NotImplementedException(string.Format("Indication of hot spots not implemented yet."));
+		Debug.LogWarning(string.Format("Indication of hot spots not implemented yet."));
 	}
 
 	public void HideHotSpotIndication(HotSpot hotSpot)
@@ -290,11 +313,20 @@ public class Monster : MonoBehaviour
 		switch (hotSpotLocation)
 		{
 			default:
-				throw new NotImplementedException(string.Format("A hot spot for {0} hasn't been set yet.", hotSpotLocation));
+				Debug.LogWarning(string.Format("A hot spot for {0} hasn't been set yet.", hotSpotLocation));
 				return null;
+
+			case HotSpotLocation.Teeth:
+				return _hotSpotTeeth;
+
+			case HotSpotLocation.Back:
+				return _hotSpotBack;
 
 			case HotSpotLocation.Tummy:
 				return _hotSpotTummy;
+
+			case HotSpotLocation.Tail:
+				return _hotSpotTail;
 		}
 	}
 	#endregion
