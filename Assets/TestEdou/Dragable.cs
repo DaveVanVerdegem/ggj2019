@@ -8,12 +8,12 @@ public class Dragable : MonoBehaviour
 {
     public Color HighlightColor;
     Color originalColor;
-    Collider col;
+    CircleCollider2D col;
     SpriteRenderer spr;
     // Start is called before the first frame update
     void Start()
     {
-        col = GetComponent<Collider>();
+        col = GetComponent<CircleCollider2D>();
         spr= GetComponent<SpriteRenderer>();
         originalColor = spr.color;
     }

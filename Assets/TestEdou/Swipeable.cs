@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class Swipeable : MonoBehaviour
 {
+    [Tooltip("Optional log output")]
     public Text log=null;
-    //Minimum seconds delay between 2 swipes that swipes are counted
+    [Tooltip("Minimum seconds delay between 2 swipes that swipes are counted")]
     public float minDelayBetweenSwipes = 0.05f;
-    //Maximum seconds delay between 2 swipes that swipes are counted before resetting the swipe count
+    [Tooltip("Maximum seconds delay between 2 swipes that swipes are counted before resetting the swipe count")]
     public float maxDelayBetweenSwipes = 0.5f;
-    //Minimum squared distance between touch end and start to be counted as a swipe
+    [Tooltip("Minimum squared distance between touch end and start to be counted as a swipe")]
     public int minDistanceForSwipe = 450;
-    //Swipe also when not dragging finger (not lifting)
+    [Tooltip("Swipe when dragging finger (instead of lifting finger)")]
     public bool swipeDrag=false;
 
     private float distanceSwiped;
@@ -34,19 +35,18 @@ public class Swipeable : MonoBehaviour
         Touch[] touches = Input.touches;
         for (int touchIndex = 0; touchIndex < touches.Length; touchIndex++)
         {
-            //if (log) log.text = "\n" + GetDebugInfo(touches[touchIndex]);// + "\n" + log.text;
             if ((swipeDrag && touches[touchIndex].phase == TouchPhase.Moved)
                || (!swipeDrag && touches[touchIndex].phase == TouchPhase.Ended))
             {
                 distanceSwiped+= touches[touchIndex].deltaPosition.sqrMagnitude;
                 if (distanceSwiped > minDistanceForSwipe)
                 {
-                    distanceSwiped %= minDistanceForSwipe;
                     if ((sinceLastSwipe < Time.time + maxDelayBetweenSwipes)
                         && (sinceLastSwipe+minDelayBetweenSwipes < Time.time ))
                     {
+                        distanceSwiped %= minDistanceForSwipe;
                         touch = touches[touchIndex];
-                        if (log) log.text = "\n Swiped! \n" + GetDebugInfo(touch);// + "\n"+ log.text;
+                        if (log) log.text = "\n Swiped! \n" + GetDebugInfo(touch);
                         swipeCount++;
                     }
                     sinceLastSwipe = Time.time;
@@ -57,7 +57,7 @@ public class Swipeable : MonoBehaviour
         {
             distanceSwiped = 0;
                swipeCount = 0;
-            if (log) log.text = "\n" + GetDebugInfo(touch);// + "\n"+ log.text;
+            if (log) log.text = "\n Reset! \n" + GetDebugInfo(touch);
         }
     }
 
