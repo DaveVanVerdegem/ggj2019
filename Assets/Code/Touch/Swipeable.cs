@@ -26,7 +26,7 @@ public class Swipeable : MonoBehaviour
 	private PolygonCollider2D _collider = null;
 
 	private float distanceSwiped;
-    private bool leftToRightSwiped;
+	private bool leftToRightSwiped;
 	private int swipeCount;
 	private float sinceLastSwipe;
 	private Touch touch;
@@ -44,39 +44,38 @@ public class Swipeable : MonoBehaviour
 	{
 		_collider = GetComponent<PolygonCollider2D>();
 		distanceSwiped = 0;
-        leftToRightSwiped = false;
-        swipeCount = 0;
+		leftToRightSwiped = false;
+		swipeCount = 0;
 		sinceLastSwipe = Time.time;
-        _lastSwipe = new Swipe(0,0,false);
-
-    }
+		_lastSwipe = new Swipe(0, 0, false);
+	}
 
 	// Update is called once per frame
 	private void Update()
 	{
 		Touch[] touches = Input.touches;
-       Debug.Log("touch -----------------------------------------");
+		//Debug.Log("touch -----------------------------------------");
 		for (int touchIndex = 0; touchIndex < touches.Length; touchIndex++)
 		{
 			Vector3 touchWorldPoint = Camera.main.ScreenToWorldPoint(new Vector3(touches[touchIndex].position.x, touches[touchIndex].position.y, 0));
 
-            //if (log) log.text = "\n col.bounds " + col.bounds+ "\n touches[touchIndex].position " + touches[touchIndex].position + "\n touchWorldPoint " + touchWorldPoint;
+			//if (log) log.text = "\n col.bounds " + col.bounds+ "\n touches[touchIndex].position " + touches[touchIndex].position + "\n touchWorldPoint " + touchWorldPoint;
 
-            if (_collider.OverlapPoint(touchWorldPoint))
+			if (_collider.OverlapPoint(touchWorldPoint))
 			{
-                if ((swipeDrag && touches[touchIndex].phase == TouchPhase.Moved) || (!swipeDrag && touches[touchIndex].phase == TouchPhase.Ended))
+				if ((swipeDrag && touches[touchIndex].phase == TouchPhase.Moved) || (!swipeDrag && touches[touchIndex].phase == TouchPhase.Ended))
 				{
-                    distanceSwiped += touches[touchIndex].deltaPosition.magnitude;
+					distanceSwiped += touches[touchIndex].deltaPosition.magnitude;
 
 					if (distanceSwiped > minDistanceForSwipe)
 					{
-                        leftToRightSwiped = touches[touchIndex].deltaPosition.x > 0;
-                        if (leftToRightSwiped != _lastSwipe.LeftToRight)
-                        {
-                            _lastSwipe = new Swipe(distanceSwiped, Time.time - sinceLastSwipe, leftToRightSwiped);
+						leftToRightSwiped = touches[touchIndex].deltaPosition.x > 0;
+						if (leftToRightSwiped != _lastSwipe.LeftToRight)
+						{
+							_lastSwipe = new Swipe(distanceSwiped, Time.time - sinceLastSwipe, leftToRightSwiped);
 							SaveSwipe(_lastSwipe);
 							touch = touches[touchIndex];
-                            distanceSwiped =0;
+							distanceSwiped = 0;
 
 							if (log)
 								log.text = "\n Swiped! \n" + GetDebugInfo(touch);
@@ -104,7 +103,7 @@ public class Swipeable : MonoBehaviour
 	#region Debug Methods
 	public string GetDebugInfo(Touch t)
 	{
-		return "SwipeCount "  + swipeCount.ToString() + "\nPosition" + t.position + "\nAngle" + (t.deltaPosition.x / t.deltaPosition.y) + "\nDeltaPosition" + t.deltaPosition;
+		return "SwipeCount " + swipeCount.ToString() + "\nPosition" + t.position + "\nAngle" + (t.deltaPosition.x / t.deltaPosition.y) + "\nDeltaPosition" + t.deltaPosition;
 	}
 	#endregion
 
@@ -128,7 +127,7 @@ public class Swipeable : MonoBehaviour
 		float averageDistance = _previousSwipes.Sum(previousSwipe => previousSwipe.Distance);
 		float averageDuration = _previousSwipes.Sum(previousSwipe => previousSwipe.Duration);
 
-		_averageSwipe = new Swipe(averageDistance, averageDuration,false);
+		_averageSwipe = new Swipe(averageDistance, averageDuration, false);
 	}
 }
 
@@ -151,19 +150,19 @@ public class Swipe
 	/// </summary>
 	public float Speed = 0f;
 
-    /// <summary>
-    /// Horizontal direction of the swipe.
-    /// </summary>
-    public bool LeftToRight = false;
-    #endregion
+	/// <summary>
+	/// Horizontal direction of the swipe.
+	/// </summary>
+	public bool LeftToRight = false;
+	#endregion
 
-    #region Constructors
-    public Swipe(float distance, float duration, bool leftToRight)
+	#region Constructors
+	public Swipe(float distance, float duration, bool leftToRight)
 	{
 		Distance = distance;
 		Duration = duration;
-        LeftToRight = leftToRight;
-        Speed = distance / duration;
+		LeftToRight = leftToRight;
+		Speed = distance / duration;
 	}
 	#endregion
 }

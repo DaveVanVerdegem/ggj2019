@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 4512195000918996668}
   - component: {fileID: 8416988733803374022}
   - component: {fileID: 716584780900551524}
+  - component: {fileID: 656955723356082938}
   - component: {fileID: 3936037062635161531}
   - component: {fileID: 4449713689559222353}
   m_Layer: 0
@@ -139,6 +140,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &656955723356082938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3592884917943994983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0784586ff0f87fc42879dab5fda0637b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tapThreshold: 1
 --- !u!114 &3936037062635161531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,9 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   log: {fileID: 0}
-  minDelayBetweenSwipes: 0.05
   maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 50
+  minDistanceForSwipe: 10
   swipeDrag: 1
 --- !u!60 &4449713689559222353
 PolygonCollider2D:
@@ -181,11 +194,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.2065927, y: 2.3643007}
-      - {x: -6.392335, y: -0.5563904}
+    - - {x: -1.3982745, y: 1.3419975}
+      - {x: -5.4978204, y: -0.3647083}
       - {x: -6.4746532, y: -3.3006606}
-      - {x: 6.423285, y: -2.8674726}
-      - {x: 4.4100494, y: 0.87299716}
+      - {x: 5.113458, y: -2.675791}
+      - {x: 4.2183676, y: 0.26600444}
 --- !u!1 &3768579842588721055
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +210,7 @@ GameObject:
   - component: {fileID: 6635554272372344645}
   - component: {fileID: 5829418930777637265}
   - component: {fileID: 602015555414344008}
+  - component: {fileID: 7954567735577957667}
   - component: {fileID: 1988154067682925452}
   - component: {fileID: 6648995612906513429}
   m_Layer: 0
@@ -245,6 +259,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7954567735577957667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3768579842588721055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0784586ff0f87fc42879dab5fda0637b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tapThreshold: 1
 --- !u!114 &1988154067682925452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,9 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   log: {fileID: 0}
-  minDelayBetweenSwipes: 0.05
   maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 50
+  minDistanceForSwipe: 10
   swipeDrag: 1
 --- !u!60 &6648995612906513429
 PolygonCollider2D:
@@ -334,6 +360,7 @@ GameObject:
   - component: {fileID: 2396008521008318013}
   - component: {fileID: 7410980724269919799}
   - component: {fileID: 8509386918818627280}
+  - component: {fileID: 2850047746337046476}
   - component: {fileID: 1359695625280505472}
   - component: {fileID: 3470022893124215717}
   m_Layer: 0
@@ -382,6 +409,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2850047746337046476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787416061740255642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0784586ff0f87fc42879dab5fda0637b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tapThreshold: 1
 --- !u!114 &1359695625280505472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,9 +435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   log: {fileID: 0}
-  minDelayBetweenSwipes: 0.05
   maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 50
+  minDistanceForSwipe: 10
   swipeDrag: 1
 --- !u!60 &3470022893124215717
 PolygonCollider2D:
@@ -424,10 +463,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -4.5617094, y: 1.8576623}
-      - {x: -5.2608194, y: -1.717175}
-      - {x: 6.8759727, y: -1.7173696}
-      - {x: 6.7526217, y: 2.1747599}
+    - - {x: -2.7087855, y: 1.9215561}
+      - {x: -4.462145, y: -1.0462885}
+      - {x: 5.3105707, y: -1.2381649}
+      - {x: 4.13297, y: 2.2067065}
 --- !u!1 &7886621182034738264
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +478,7 @@ GameObject:
   - component: {fileID: 9002760104902194217}
   - component: {fileID: 3321324004226680836}
   - component: {fileID: 7881347343871762153}
+  - component: {fileID: 6909833927208254236}
   - component: {fileID: 1765144615536056744}
   - component: {fileID: 6894236166987207100}
   m_Layer: 0
@@ -487,6 +527,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6909833927208254236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886621182034738264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0784586ff0f87fc42879dab5fda0637b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tapThreshold: 1
 --- !u!114 &1765144615536056744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,9 +553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   log: {fileID: 0}
-  minDelayBetweenSwipes: 0.05
   maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 50
+  minDistanceForSwipe: 10
   swipeDrag: 1
 --- !u!60 &6894236166987207100
 PolygonCollider2D:
@@ -529,11 +581,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.6471148, y: 1.9265026}
-      - {x: 0.3357525, y: 1.1840477}
-      - {x: 0.9306493, y: -1.1693236}
-      - {x: 3.109932, y: 1.5329763}
-      - {x: 2.1091852, y: 4.941531}
+    - - {x: 0.53710127, y: 1.1962293}
+      - {x: -0.2200737, y: 0.012941837}
+      - {x: -0.67732906, y: -3.0124092}
+      - {x: 2.904768, y: -3.176095}
+      - {x: 1.8125324, y: 6.4508133}
+      - {x: -0.46137428, y: 6.3144445}
 --- !u!1001 &6107669423616381717
 PrefabInstance:
   m_ObjectHideFlags: 0
