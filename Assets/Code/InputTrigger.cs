@@ -5,7 +5,7 @@ using UnityEngine;
 public enum HotSpot
 {
 	None = 0,
-	Face = 1,
+	Teeth = 1,
 	Back = 2,
 	Tummy = 3,
 	Tail = 4

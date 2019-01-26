@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87c93bcbcbf1aff4fa0d7013fb6eccbb, type: 3}
   m_Name: TestQueue
   m_EditorClassIdentifier: 
+  FailTimer: 30
   Actions:
   - {fileID: 11400000, guid: 0ca2377c39c76d24395b1a1ee242cbde, type: 2}
   - {fileID: 11400000, guid: 32d67a2c38ca7ea4aa302b6bbf7a6753, type: 2}
