@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spine.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -72,6 +73,19 @@ public class Monster : MonoBehaviour
 	[Tooltip("Hot spot for the tail of the monster.")]
 	[SerializeField]
 	private HotSpot _hotSpotTail = null;
+
+	[Header("Animations")]
+	[SerializeField]
+	private string _animationEscalationNone = "";
+
+	[SerializeField]
+	private string _animationEscalationLow = "";
+
+	[SerializeField]
+	private string _animationEscalationMedium = "";
+
+	[SerializeField]
+	private string _animationEscalationHigh = "";
 	#endregion
 
 	#region Properties
@@ -79,7 +93,7 @@ public class Monster : MonoBehaviour
 	/// <summary>
 	/// Escalation level where the monster is currently at.
 	/// </summary>
-	[HideInInspector]
+	//[HideInInspector]
 	public EscalationLevel MonsterEscalationLevel = 0;
 	#endregion
 
@@ -97,6 +111,11 @@ public class Monster : MonoBehaviour
 	private HotSpot _currentlyActiveHotSpot = null;
 
 	private GameObject _hotSpotIndicator = null;
+
+	/// <summary>
+	/// The skeleton animation of the monster.
+	/// </summary>
+	private SkeletonAnimation _skeletonAnimation;
 
 	#region Rumbler
 	/// <summary>
@@ -125,6 +144,7 @@ public class Monster : MonoBehaviour
 	private void Awake()
 	{
 		_rumbler = GetComponent<Rumbler>();
+		_skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
 	}
 
 	// Start is called before the first frame update
@@ -167,7 +187,8 @@ public class Monster : MonoBehaviour
 	public void Escalate()
 	{
 		_angrySound.PlayRandomAudioClip();
-		MonsterEscalationLevel++;
+
+		UpdateEscalation(true);
 
 		Debug.Log(string.Format("Monster escalates! It is now at level {0}.", MonsterEscalationLevel), this);
 
@@ -180,6 +201,7 @@ public class Monster : MonoBehaviour
 	public void Iterate()
 	{
 		_currentActionIndex++;
+		UpdateEscalation(false);
 
 		UpdateActiveHotSpot();
 
@@ -320,6 +342,45 @@ public class Monster : MonoBehaviour
 		// Set new hot spot.
 		_currentlyActiveHotSpot = newHotSpot;
 		IndicateHotSpot(_currentlyActiveHotSpot);
+	}
+
+	public void UpdateAnimation()
+	{
+		string animation = "";
+
+		switch (MonsterEscalationLevel)
+		{
+			default:
+			case EscalationLevel.None:
+				animation = _animationEscalationNone;
+				break;
+
+			case EscalationLevel.Low:
+				animation = _animationEscalationLow;
+				break;
+
+			case EscalationLevel.Medium:
+				animation = _animationEscalationMedium;
+				break;
+
+			case EscalationLevel.High:
+				animation = _animationEscalationHigh;
+				break;
+		}
+
+		_skeletonAnimation.AnimationName = animation;
+	}
+
+	public void UpdateEscalation(bool increment)
+	{
+		if (increment)
+			MonsterEscalationLevel++;
+		else
+			MonsterEscalationLevel--;
+
+		MonsterEscalationLevel = (EscalationLevel)Mathf.Clamp((int)MonsterEscalationLevel, 0, 4);
+
+		UpdateAnimation();
 	}
 	#endregion
 
