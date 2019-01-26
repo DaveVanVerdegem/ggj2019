@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+    [RequireComponent(typeof(CircleCollider2D))]
 public class Swipeable : MonoBehaviour
 {
     [Tooltip("Optional log output")]
@@ -16,6 +17,7 @@ public class Swipeable : MonoBehaviour
     [Tooltip("Swipe when dragging finger (instead of lifting finger)")]
     public bool swipeDrag=false;
 
+    CircleCollider2D col;
     private float distanceSwiped;
     private int swipeCount;
     private float sinceLastSwipe;
@@ -24,6 +26,7 @@ public class Swipeable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        col = GetComponent<CircleCollider2D>();
         distanceSwiped = 0;
         swipeCount = 0;
         sinceLastSwipe = Time.time;
@@ -35,21 +38,26 @@ public class Swipeable : MonoBehaviour
         Touch[] touches = Input.touches;
         for (int touchIndex = 0; touchIndex < touches.Length; touchIndex++)
         {
-            if ((swipeDrag && touches[touchIndex].phase == TouchPhase.Moved)
-               || (!swipeDrag && touches[touchIndex].phase == TouchPhase.Ended))
+            Vector3 touchWorldPoint = Camera.main.ScreenToWorldPoint(new Vector3(touches[touchIndex].position.x, touches[touchIndex].position.y, 0));
+            //if (log) log.text = "\n col.bounds " + col.bounds+ "\n touches[touchIndex].position " + touches[touchIndex].position + "\n touchWorldPoint " + touchWorldPoint;
+            if (col.OverlapPoint(touchWorldPoint))
             {
-                distanceSwiped+= touches[touchIndex].deltaPosition.sqrMagnitude;
-                if (distanceSwiped > minDistanceForSwipe)
+                if ((swipeDrag && touches[touchIndex].phase == TouchPhase.Moved)
+               || (!swipeDrag && touches[touchIndex].phase == TouchPhase.Ended))
                 {
-                    if ((sinceLastSwipe < Time.time + maxDelayBetweenSwipes)
-                        && (sinceLastSwipe+minDelayBetweenSwipes < Time.time ))
+                    distanceSwiped += touches[touchIndex].deltaPosition.sqrMagnitude;
+                    if (distanceSwiped > minDistanceForSwipe)
                     {
-                        distanceSwiped %= minDistanceForSwipe;
-                        touch = touches[touchIndex];
-                        if (log) log.text = "\n Swiped! \n" + GetDebugInfo(touch);
-                        swipeCount++;
+                        if ((sinceLastSwipe < Time.time + maxDelayBetweenSwipes)
+                            && (sinceLastSwipe + minDelayBetweenSwipes < Time.time))
+                        {
+                            distanceSwiped %= minDistanceForSwipe;
+                            touch = touches[touchIndex];
+                            if (log) log.text = "\n Swiped! \n" + GetDebugInfo(touch);
+                            swipeCount++;
+                        }
+                        sinceLastSwipe = Time.time;
                     }
-                    sinceLastSwipe = Time.time;
                 }
             }
         }
