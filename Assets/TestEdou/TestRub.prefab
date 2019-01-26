@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1593222923963093455}
   - component: {fileID: 1593222923963093454}
   - component: {fileID: 1341476193405732653}
+  - component: {fileID: 8877516760006857280}
   m_Layer: 0
   m_Name: TestRub
   m_TagString: Untagged
@@ -96,3 +97,19 @@ MonoBehaviour:
   revertDelay: 0.5
   speed: 200
   maxAngle: 15
+--- !u!58 &8877516760006857280
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593222923963093453}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.013257593, y: 0.29528245}
+  serializedVersion: 2
+  m_Radius: 1
