@@ -151,8 +151,8 @@ MonoBehaviour:
   log: {fileID: 0}
   minDelayBetweenSwipes: 0.05
   maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 450
-  swipeDrag: 0
+  minDistanceForSwipe: 50
+  swipeDrag: 1
 --- !u!60 &4449713689559222353
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -178,11 +178,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.49255943, y: 1.0985116}
-      - {x: -4.866897, y: -0.8484951}
-      - {x: -5.1439524, y: -2.262065}
-      - {x: 5.6118827, y: -1.9911575}
-      - {x: 3.9556646, y: -0.035773516}
+    - - {x: -1.2065927, y: 2.3643007}
+      - {x: -6.392335, y: -0.5563904}
+      - {x: -6.4746532, y: -3.3006606}
+      - {x: 6.423285, y: -2.8674726}
+      - {x: 4.4100494, y: 0.87299716}
 --- !u!1 &3768579842588721055
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,8 +257,8 @@ MonoBehaviour:
   log: {fileID: 0}
   minDelayBetweenSwipes: 0.05
   maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 450
-  swipeDrag: 0
+  minDistanceForSwipe: 50
+  swipeDrag: 1
 --- !u!60 &6648995612906513429
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -284,9 +284,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.7911215, y: 1.8955611}
-      - {x: -2.930718, y: 1.1810105}
-      - {x: -2.0018291, y: -1.162528}
+    - - {x: -2.361597, y: 2.8290668}
+      - {x: -4.6680756, y: 1.6736941}
+      - {x: -3.791048, y: -1.3959041}
       - {x: 1.2948072, y: -1.1625285}
       - {x: 1.940887, y: 0.7096629}
 --- !u!1 &5397972347886808354
@@ -394,8 +394,8 @@ MonoBehaviour:
   log: {fileID: 0}
   minDelayBetweenSwipes: 0.05
   maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 450
-  swipeDrag: 0
+  minDistanceForSwipe: 50
+  swipeDrag: 1
 --- !u!60 &3470022893124215717
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -421,10 +421,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -3.5504117, y: 1.2612557}
-      - {x: -3.2900848, y: -0.7318082}
-      - {x: 5.7350225, y: -0.70607233}
-      - {x: 6.613018, y: 0.978158}
+    - - {x: -4.5617094, y: 1.8576623}
+      - {x: -5.2608194, y: -1.717175}
+      - {x: 6.8759727, y: -1.7173696}
+      - {x: 6.7526217, y: 2.1747599}
 --- !u!1 &7886621182034738264
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,8 +499,8 @@ MonoBehaviour:
   log: {fileID: 0}
   minDelayBetweenSwipes: 0.05
   maxDelayBetweenSwipes: 0.5
-  minDistanceForSwipe: 450
-  swipeDrag: 0
+  minDistanceForSwipe: 50
+  swipeDrag: 1
 --- !u!60 &6894236166987207100
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -602,11 +602,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7819040656781100528, guid: e6b97774b28b821448ec03bc5cd438c8,
-        type: 3}
-      propertyPath: _animationName
-      value: Sleep_Idle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6b97774b28b821448ec03bc5cd438c8, type: 3}
