@@ -118,6 +118,39 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5249372365836797824}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &195385004
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195385003}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.2203365, y: 2.7626925}
+      - {x: -2.5563662, y: 2.040233}
+      - {x: -8.142182, y: -2.3513732}
+      - {x: -7.2184258, y: -4.712122}
+      - {x: -2.8771615, y: -4.5456476}
+      - {x: 6.5205684, y: -4.6074505}
+      - {x: 7.464867, y: -1.2394487}
+      - {x: 4.9485917, y: 2.1346633}
 --- !u!114 &195385007
 MonoBehaviour:
   m_ObjectHideFlags: 0
