@@ -18,7 +18,7 @@ public class MonsterIsHungry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mouthCollider = GetComponent<Collider2D>();
+        mouthCollider = hotspot.GetComponent<Collider2D>();
         inputTrigger = hotspot.GetComponent<InputTrigger>();
     }
 
@@ -37,6 +37,7 @@ public class MonsterIsHungry : MonoBehaviour
         {
             Debug.Log("Food in mouth!", this);
             Destroy(other.gameObject);
+            inputTrigger.TriggerInput(ActionType.DragAndDrop);
         }
     }
 
