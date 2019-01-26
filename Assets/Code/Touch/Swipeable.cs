@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(PolygonCollider2D))]
 public class Swipeable : MonoBehaviour
 {
 	#region Inspector Fields
@@ -25,25 +25,25 @@ public class Swipeable : MonoBehaviour
 	/// <summary>
 	/// Collider attached to this object.
 	/// </summary>
-	private Collider2D _collider = null;
+	private PolygonCollider2D _collider = null;
 
 	private float distanceSwiped;
 	private int swipeCount;
 	private float sinceLastSwipe;
 	private Touch touch;
 
-	private List<Swipe> _previousSwipes = new List<Swipe>();
-
 	private Swipe _lastSwipe = null;
 
 	private Swipe _averageSwipe = null;
+
+	private List<Swipe> _previousSwipes = new List<Swipe>();
 	#endregion
 
 	#region Life Cycle
 	// Start is called before the first frame update
 	private void Start()
 	{
-		_collider = GetComponent<Collider2D>();
+		_collider = GetComponent<PolygonCollider2D>();
 		distanceSwiped = 0;
 		swipeCount = 0;
 		sinceLastSwipe = Time.time;
@@ -52,6 +52,16 @@ public class Swipeable : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
+		if (sinceLastSwipe + maxDelayBetweenSwipes < Time.time)
+		{
+			distanceSwiped = 0;
+			swipeCount = 0;
+			if (log) log.text = "\n Reset! \n" + GetDebugInfo(touch);
+
+			// Clear the previous swipes.
+			_previousSwipes.Clear();
+		}
+
 		Touch[] touches = Input.touches;
 		for (int touchIndex = 0; touchIndex < touches.Length; touchIndex++)
 		{
@@ -59,6 +69,7 @@ public class Swipeable : MonoBehaviour
 
 			//if (log) log.text = "\n col.bounds " + col.bounds+ "\n touches[touchIndex].position " + touches[touchIndex].position + "\n touchWorldPoint " + touchWorldPoint;
 
+			// Continue if the swipe didn't overlap with the collider.
 			if (_collider.OverlapPoint(touchWorldPoint))
 			{
 				if ((swipeDrag && touches[touchIndex].phase == TouchPhase.Moved) || (!swipeDrag && touches[touchIndex].phase == TouchPhase.Ended))
@@ -80,21 +91,27 @@ public class Swipeable : MonoBehaviour
 
 							swipeCount++;
 						}
+						else
+						{
+							Debug.LogWarning("Not swiped between the thresholds.", this);
+						}
 
 						sinceLastSwipe = Time.time;
 					}
+					else
+					{
+						Debug.LogWarning("Not swiped far enough.", this);
+					}
+				}
+				else
+				{
+					Debug.LogWarning("Not in the right touch phase.", this);
 				}
 			}
-		}
-
-		if (sinceLastSwipe + maxDelayBetweenSwipes < Time.time)
-		{
-			distanceSwiped = 0;
-			swipeCount = 0;
-			if (log) log.text = "\n Reset! \n" + GetDebugInfo(touch);
-
-			// Clear the previous swipes.
-			_previousSwipes.Clear();
+			else
+			{
+				Debug.LogWarning("Not ended in collider.", this);
+			}
 		}
 	}
 	#endregion
@@ -123,8 +140,8 @@ public class Swipeable : MonoBehaviour
 		_previousSwipes.Add(swipe);
 
 		// Update average swipe.
-		float averageDistance = _previousSwipes.Sum(previousSwipe => previousSwipe.Distance);
-		float averageDuration = _previousSwipes.Sum(previousSwipe => previousSwipe.Duration);
+		float averageDistance = _previousSwipes.Sum(previousSwipe => previousSwipe.Distance) / _previousSwipes.Count;
+		float averageDuration = _previousSwipes.Sum(previousSwipe => previousSwipe.Duration) / _previousSwipes.Count;
 
 		_averageSwipe = new Swipe(averageDistance, averageDuration);
 	}
