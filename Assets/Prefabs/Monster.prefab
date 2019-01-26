@@ -132,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HotSpot: 2
 --- !u!1 &3768579842588721055
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +143,8 @@ GameObject:
   - component: {fileID: 6635554272372344645}
   - component: {fileID: 5829418930777637265}
   - component: {fileID: 602015555414344008}
+  - component: {fileID: 6648995612906513429}
+  - component: {fileID: 1988154067682925452}
   m_Layer: 0
   m_Name: HotSpotTeeth
   m_TagString: Untagged
@@ -190,7 +191,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HotSpot: 1
+--- !u!60 &6648995612906513429
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3768579842588721055}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.7911215, y: 1.8955611}
+      - {x: -2.930718, y: 1.1810105}
+      - {x: -2.0018291, y: -1.162528}
+      - {x: 1.2948072, y: -1.1625285}
+      - {x: 1.940887, y: 0.7096629}
+--- !u!114 &1988154067682925452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3768579842588721055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef65b8782594d48428f10357f29cb48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: {fileID: 0}
+  minDelayBetweenSwipes: 0.05
+  maxDelayBetweenSwipes: 0.5
+  minDistanceForSwipe: 450
+  swipeDrag: 0
 --- !u!1 &5397972347886808354
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +326,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HotSpot: 3
 --- !u!1 &7886621182034738264
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +383,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dbf16b65b368949af2035186ebad7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HotSpot: 4
 --- !u!1 &8001608228658256180
 GameObject:
   m_ObjectHideFlags: 0
