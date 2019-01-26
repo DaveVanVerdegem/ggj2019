@@ -1,0 +1,132 @@
+
+Monster.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Monster/Monster_Arm
+  rotate: true
+  xy: 289, 393
+  size: 576, 197
+  orig: 576, 197
+  offset: 0, 0
+  index: -1
+Monster/Monster_Bek
+  rotate: false
+  xy: 289, 971
+  size: 517, 273
+  orig: 517, 273
+  offset: 0, 0
+  index: -1
+Monster/Monster_Buik
+  rotate: false
+  xy: 2, 1246
+  size: 1226, 766
+  orig: 1226, 766
+  offset: 0, 0
+  index: -1
+Monster/Monster_Hand
+  rotate: false
+  xy: 808, 1112
+  size: 248, 132
+  orig: 248, 132
+  offset: 0, 0
+  index: -1
+Monster/Monster_Hoofd
+  rotate: false
+  xy: 1616, 1638
+  size: 277, 374
+  orig: 277, 374
+  offset: 0, 0
+  index: -1
+Monster/Monster_Kaak
+  rotate: false
+  xy: 289, 249
+  size: 197, 142
+  orig: 197, 142
+  offset: 0, 0
+  index: -1
+Monster/Monster_MondOpen
+  rotate: false
+  xy: 1230, 1513
+  size: 384, 499
+  orig: 384, 499
+  offset: 0, 0
+  index: -1
+Monster/Monster_Neus
+  rotate: false
+  xy: 1895, 1669
+  size: 81, 62
+  orig: 81, 62
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Boos
+  rotate: false
+  xy: 1616, 1533
+  size: 275, 103
+  orig: 275, 103
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Happy
+  rotate: true
+  xy: 647, 713
+  size: 256, 100
+  orig: 256, 100
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Open
+  rotate: false
+  xy: 808, 1010
+  size: 249, 100
+  orig: 249, 100
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Pupils
+  rotate: true
+  xy: 1558, 1320
+  size: 191, 40
+  orig: 191, 40
+  offset: 0, 0
+  index: -1
+Monster/Monster_Ogen_Toe
+  rotate: true
+  xy: 1895, 1733
+  size: 279, 100
+  orig: 279, 100
+  offset: 0, 0
+  index: -1
+Monster/Monster_Oor
+  rotate: true
+  xy: 488, 327
+  size: 180, 110
+  orig: 180, 110
+  offset: 0, 0
+  index: -1
+Monster/Monster_Schouder
+  rotate: true
+  xy: 1230, 1265
+  size: 246, 326
+  orig: 246, 326
+  offset: 0, 0
+  index: -1
+Monster/Monster_Staart
+  rotate: false
+  xy: 2, 282
+  size: 285, 962
+  orig: 285, 962
+  offset: 0, 0
+  index: -1
+Monster/Monster_Tanden_Onder
+  rotate: true
+  xy: 488, 509
+  size: 460, 157
+  orig: 460, 157
+  offset: 0, 0
+  index: -1
+Monster/Monster_Voet
+  rotate: false
+  xy: 2, 2
+  size: 274, 278
+  orig: 274, 278
+  offset: 0, 0
+  index: -1
