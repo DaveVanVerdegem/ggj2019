@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da0ad8b3baef64768ad12eae3ec5c143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hotspot: {fileID: 1649714744}
+  monster: {fileID: 195385003}
   actionQueueProperties: {fileID: 11400000, guid: cca2d44e07bc049d8b7ca95580c84d99,
     type: 2}
 --- !u!61 &328189606
@@ -353,12 +353,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1649714744 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3768579842588721055, guid: f9655831422af9047ac80a3219c6b486,
-    type: 3}
-  m_PrefabInstance: {fileID: 5249372365836797824}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1974796553
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +652,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 163717374277235401, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: _actionQueue
+      value: 
+      objectReference: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9655831422af9047ac80a3219c6b486, type: 3}
 --- !u!1001 &8269014807456735994

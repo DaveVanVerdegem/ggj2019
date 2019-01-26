@@ -8,18 +8,20 @@ using UnityEngine;
 public class MonsterIsHungry : MonoBehaviour
 {
 
-    public GameObject hotspot;
+    public GameObject monster;
 
     public ActionQueueProperties actionQueueProperties;
 
     private Collider2D mouthCollider;
     private InputTrigger inputTrigger;
+    private Monster monsterScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        mouthCollider = hotspot.GetComponent<Collider2D>();
-        inputTrigger = hotspot.GetComponent<InputTrigger>();
+        //gameObject.AddComponent<Collider2D>(hotspot.GetComponent<Collider2D>());
+        mouthCollider = GetComponent<Collider2D>();
+        monsterScript = monster.GetComponent<Monster>();
     }
 
     // Update is called once per frame
@@ -37,12 +39,13 @@ public class MonsterIsHungry : MonoBehaviour
         {
             Debug.Log("Food in mouth!", this);
             Destroy(other.gameObject);
-            inputTrigger.TriggerInput(ActionType.DragAndDrop);
+            monsterScript.RegisterAction(ActionType.DragAndDrop, HotSpotLocation.Teeth);
         }
     }
 
-    void CompleteMinigame()
-    {
-        Debug.Log("The monster is fed and happy!", this);
-    }
+    //maybe this is not needed
+    //void CompleteMinigame()
+    //{
+    //    Debug.Log("The monster is fed and happy!", this);
+    //}
 }
