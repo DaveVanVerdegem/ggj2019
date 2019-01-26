@@ -50,11 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360c84f05a14a794198ac394e2d0273f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hotSpotIndicatorPrefab: {fileID: 7275703153782066603, guid: 6e31a859100a15f4ba713a9710490d16,
+  _hotSpotIndicatorPrefab: {fileID: 3870167896035498074, guid: 6e31a859100a15f4ba713a9710490d16,
     type: 3}
   _angrySound: {fileID: 5740573572664769627}
   _happySound: {fileID: 0}
-  _actionQueue: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726, type: 2}
   _hotSpotTeeth:
     HotSpotHelper: {fileID: 5829418930777637265}
     Animation: 
@@ -688,6 +687,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416877070887425903, guid: e6b97774b28b821448ec03bc5cd438c8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416877070887425903, guid: e6b97774b28b821448ec03bc5cd438c8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416877070887425903, guid: e6b97774b28b821448ec03bc5cd438c8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416877070887425903, guid: e6b97774b28b821448ec03bc5cd438c8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01829968
+      objectReference: {fileID: 0}
+    - target: {fileID: 8416877070887425903, guid: e6b97774b28b821448ec03bc5cd438c8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.6781
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6b97774b28b821448ec03bc5cd438c8, type: 3}
