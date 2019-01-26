@@ -15,36 +15,36 @@ public enum EscalationLevel
 
 public class Monster : MonoBehaviour
 {
-    #region Inspector Fields
-    /// <summary>
-    /// Prefab to indicate the current hotspot.
-    /// </summary>
-    [Tooltip("Prefab to indicate the current hotspot.")]
-    [SerializeField]
-    private Transform _hotSpotIndicatorPrefab = null;
+	#region Inspector Fields
+	/// <summary>
+	/// Prefab to indicate the current hotspot.
+	/// </summary>
+	[Tooltip("Prefab to indicate the current hotspot.")]
+	[SerializeField]
+	private GameObject _hotSpotIndicatorPrefab = null;
 
-    /// <summary>
-    /// Angry audio clips
-    /// </summary>
-    [Tooltip("Angry audio clips")]
-    [SerializeField]
-    private RandomAudioClip _angrySound = null;
+	/// <summary>
+	/// Angry audio clips
+	/// </summary>
+	[Tooltip("Angry audio clips")]
+	[SerializeField]
+	private RandomAudioClip _angrySound = null;
 
-    /// <summary>
-    /// Happy audio clips
-    /// </summary>
-    [Tooltip("Happy audio clips")]
-    [SerializeField]
-    private RandomAudioClip _happySound = null;
+	/// <summary>
+	/// Happy audio clips
+	/// </summary>
+	[Tooltip("Happy audio clips")]
+	[SerializeField]
+	private RandomAudioClip _happySound = null;
 
-    /// <summary>
-    /// Action queue to currently use for this monster.
-    /// </summary>
-    [Tooltip("Action queue to currently use for this monster.")]
-    [SerializeField]
-    private ActionQueueProperties _actionQueue = null;
+	/// <summary>
+	/// Action queue to currently use for this monster.
+	/// </summary>
+	[Tooltip("Action queue to currently use for this monster.")]
+	[SerializeField]
+	private ActionQueueProperties _actionQueue = null;
 
-    [Header("Hot Spots")]
+	[Header("Hot Spots")]
 	/// <summary>
 	/// Hot spot for the teeth of the monster.
 	/// </summary>
@@ -94,14 +94,15 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	private int _currentActionIndex = 0;
 
-    private HotSpot _currentlyActiveHotSpot = null;
-    private Transform _currentlyActiveHotSpotIndicator = null;
+	private HotSpot _currentlyActiveHotSpot = null;
 
-    #region Rumbler
-    /// <summary>
-    /// Attached rumbler.
-    /// </summary>
-    private Rumbler _rumbler = null;
+	private GameObject _hotSpotIndicator = null;
+
+	#region Rumbler
+	/// <summary>
+	/// Attached rumbler.
+	/// </summary>
+	private Rumbler _rumbler = null;
 
 	/// <summary>
 	/// Timer to escalate rumbles.
@@ -165,8 +166,8 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	public void Escalate()
 	{
-        _angrySound.PlayRandomAudioClip();
-        MonsterEscalationLevel++;
+		_angrySound.PlayRandomAudioClip();
+		MonsterEscalationLevel++;
 
 		Debug.Log(string.Format("Monster escalates! It is now at level {0}.", MonsterEscalationLevel), this);
 
@@ -244,13 +245,19 @@ public class Monster : MonoBehaviour
 	{
 		if (hotSpot == null)
 			return;
+
+		if (_hotSpotIndicator == null)
+			_hotSpotIndicator = Instantiate(_hotSpotIndicatorPrefab);
+
 		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotHelper.HotSpotLocation), this);
-        _currentlyActiveHotSpotIndicator=Instantiate<Transform>(_hotSpotIndicatorPrefab, hotSpot.HotSpotHelper.transform.position, Quaternion.Euler(  _hotSpotIndicatorPrefab.eulerAngles));
-    }
+
+		_hotSpotIndicator.transform.position = hotSpot.HotSpotHelper.transform.position;
+		_hotSpotIndicator.SetActive(true);
+	}
 
 	public void HideHotSpotIndication(HotSpot hotSpot)
 	{
-        Destroy(_currentlyActiveHotSpotIndicator);
+		_hotSpotIndicator.SetActive(false);
 	}
 	#endregion
 

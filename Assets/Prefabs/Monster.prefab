@@ -30,6 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9052492199286628790}
+  - {fileID: 7060491718408944374}
   - {fileID: 6635554272372344645}
   - {fileID: 4512195000918996668}
   - {fileID: 2396008521008318013}
@@ -49,8 +50,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360c84f05a14a794198ac394e2d0273f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hotSpotIndicatorPrefab: {fileID: 7275703153782066603, guid: 6e31a859100a15f4ba713a9710490d16,
+  _hotSpotIndicatorPrefab: {fileID: 3870167896035498074, guid: 6e31a859100a15f4ba713a9710490d16,
     type: 3}
+  _angrySound: {fileID: 3337583974292829982}
+  _happySound: {fileID: 0}
   _actionQueue: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726, type: 2}
   _hotSpotTeeth:
     HotSpotHelper: {fileID: 5829418930777637265}
@@ -109,7 +112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 614638918953838516}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8416988733803374022
 MonoBehaviour:
@@ -163,7 +166,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -215,7 +218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 614638918953838516}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5829418930777637265
 MonoBehaviour:
@@ -269,7 +272,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -352,7 +355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 614638918953838516}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7410980724269919799
 MonoBehaviour:
@@ -406,7 +409,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -457,7 +460,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 614638918953838516}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3321324004226680836
 MonoBehaviour:
@@ -511,7 +514,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -611,3 +614,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6107669423616381717}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7719357831431312956
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 614638918953838516}
+    m_Modifications:
+    - target: {fileID: 782303361550380235, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_Name
+      value: AngryAudio
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4bc34dd762379ae46acc744a2c667084, type: 3}
+--- !u!4 &7060491718408944374 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 782303361550380234, guid: 4bc34dd762379ae46acc744a2c667084,
+    type: 3}
+  m_PrefabInstance: {fileID: 7719357831431312956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3337583974292829982 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5004011543517815074, guid: 4bc34dd762379ae46acc744a2c667084,
+    type: 3}
+  m_PrefabInstance: {fileID: 7719357831431312956}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6de3b42c34c5a84a8a7ea513400d475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
