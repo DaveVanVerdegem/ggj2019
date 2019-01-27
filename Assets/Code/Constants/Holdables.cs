@@ -2,4 +2,4 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum HoldableType {None, Comb, Toothbrush, Apple, Pincet }
+public enum HoldableType {None, Comb, Toothbrush, Apple, Pincet, NailFile }
