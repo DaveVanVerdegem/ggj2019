@@ -9,12 +9,12 @@ public enum AudioType
 	Angry,
 	Happy,
 	Eating,
-    Hungry,
-    Satisfied,
-    Toothbrush,
-    Combing,
-    Pincer,
-    NailFiling,
+	Hungry,
+	Satisfied,
+	Toothbrush,
+	Combing,
+	Pincer,
+	NailFiling,
 }
 #endregion
 

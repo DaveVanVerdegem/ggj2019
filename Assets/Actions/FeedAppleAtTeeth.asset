@@ -15,8 +15,7 @@ MonoBehaviour:
   ActionType: 2
   HotSpotLocation: 1
   holdableType: 3
-  Indicator: {fileID: 3870167896035498074, guid: 2859d1a220a424a438eda6133428a1f6,
-    type: 3}
+  Indicator: {fileID: 0}
   AudioToPlayOnSucces: 2
   AnimationTypeToIndicate: 4
   AnimationTypeOnSucces: 3
