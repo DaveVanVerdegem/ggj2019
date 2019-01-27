@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _actionQueue: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726, type: 2}
-  _hotSpotIndicatorPrefab: {fileID: 7275703153782066603, guid: 6e31a859100a15f4ba713a9710490d16,
+  _hotSpotIndicatorPrefab: {fileID: 3870167896035498074, guid: 6e31a859100a15f4ba713a9710490d16,
     type: 3}
   _angrySound: {fileID: 5740573572664769627}
   _happySound: {fileID: 1211858841665430042}
@@ -913,15 +913,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6666829105749020579, guid: 06779f9f28d6b37448f13497c369629d,
-        type: 3}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 6666829104722300142, guid: 06779f9f28d6b37448f13497c369629d,
         type: 3}
       propertyPath: m_Radius
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666829105749020579, guid: 06779f9f28d6b37448f13497c369629d,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06779f9f28d6b37448f13497c369629d, type: 3}
@@ -1013,12 +1013,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 15.462001
       objectReference: {fileID: 0}
-    - target: {fileID: 5101313326230562548, guid: c1e0204fe61baf143a808cfd76d9e852,
+    - target: {fileID: 5101313325428178381, guid: c1e0204fe61baf143a808cfd76d9e852,
         type: 3}
       propertyPath: m_Radius
       value: 1.2
       objectReference: {fileID: 0}
-    - target: {fileID: 5101313325428178381, guid: c1e0204fe61baf143a808cfd76d9e852,
+    - target: {fileID: 5101313326230562548, guid: c1e0204fe61baf143a808cfd76d9e852,
         type: 3}
       propertyPath: m_Radius
       value: 1.2
