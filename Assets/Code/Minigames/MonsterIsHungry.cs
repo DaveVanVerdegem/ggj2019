@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// The monster is hungry. Feed him food!
 /// </summary>
-public class MonsterIsHungry : MonoBehaviour, IMinigame
+public class MonsterIsHungry : AbstractMinigame
 {
 
     public GameObject monster;
@@ -56,7 +56,7 @@ public class MonsterIsHungry : MonoBehaviour, IMinigame
     }
 
     #region IMinigame methods
-    public ActionQueueProperties GetActionQueueProperties()
+    public override ActionQueueProperties GetActionQueueProperties()
     {
         return actionQueueProperties;
     }

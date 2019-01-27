@@ -5,12 +5,12 @@ using UnityEngine;
 public class MinigameManager : MonoBehaviour
 {
     public Monster monster;
-    public IMinigame[] minigames;
+    public AbstractMinigame[] minigames;
 
     private int currentMinigameIndex = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         monster.SetCurrentActionProperties(minigames[currentMinigameIndex].GetActionQueueProperties());
     }
@@ -23,6 +23,7 @@ public class MinigameManager : MonoBehaviour
 
     public void CompleteCurrentMinigame()
     {
+        Debug.Log(string.Format("Minigame {0} completed!", currentMinigameIndex), this);
         currentMinigameIndex++;
         if(currentMinigameIndex < minigames.Length)
         {
