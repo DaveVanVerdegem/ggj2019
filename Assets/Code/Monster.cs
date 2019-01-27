@@ -362,7 +362,7 @@ public class Monster : MonoBehaviour
         {
             if (actionProperties.ActionType == ActionType.DragAndDrop)
             {
-                _holdObject.ReleaseAnObject();
+                _holdObject.DropObject();
             }
 
             // Succes!

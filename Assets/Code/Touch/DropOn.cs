@@ -8,10 +8,6 @@ public class DropOn : MonoBehaviour
 
     private InputTrigger _inputTrigger = null;
 
-    private Swipeable _swipeable = null;
-
-    private float _lastTap = 0f;
-
     // Start is called before the first frame update
     private void Start()
     {
@@ -32,7 +28,6 @@ public class DropOn : MonoBehaviour
 
                 if (_collider2D.OverlapPoint(touchPosition))
                 {
-                    _lastTap = Time.time;
                     _inputTrigger.TriggerInput(ActionType.DragAndDrop);
                     return;
                 }
