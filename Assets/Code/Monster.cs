@@ -24,18 +24,18 @@ public enum GameState
 
 public class Monster : MonoBehaviour
 {
-    #region Inspector Fields
-    /// <summary>
-    /// HoldObject, keep track of currently held object
-    /// </summary>
-    [Tooltip("HoldObject, keep track of currently held object")]
-    [SerializeField]
-    private HoldObject _holdObject = null;
+	#region Inspector Fields
+	/// <summary>
+	/// HoldObject, keep track of currently held object
+	/// </summary>
+	[Tooltip("HoldObject, keep track of currently held object")]
+	[SerializeField]
+	private HoldObject _holdObject = null;
 
-    /// <summary>
-    /// Action queue to currently use for this monster.
-    /// </summary>
-    [Tooltip("Action queue to currently use for this monster.")]
+	/// <summary>
+	/// Action queue to currently use for this monster.
+	/// </summary>
+	[Tooltip("Action queue to currently use for this monster.")]
 	[SerializeField]
 	private ActionQueueProperties _actionQueue = null;
 
@@ -95,14 +95,14 @@ public class Monster : MonoBehaviour
 	[SerializeField]
 	private RandomAudioClip _pincerSound = null;
 
-    /// <summary>
-    /// Nail filing audio clips
-    /// </summary>
-    [Tooltip("Nail filing audio clips")]
-    [SerializeField]
-    private RandomAudioClip _nailFilingSound = null;
+	/// <summary>
+	/// Nail filing audio clips
+	/// </summary>
+	[Tooltip("Nail filing audio clips")]
+	[SerializeField]
+	private RandomAudioClip _nailFilingSound = null;
 
-    [Header("Hot Spots")]
+	[Header("Hot Spots")]
 	/// <summary>
 	/// Hot spot for the teeth of the monster.
 	/// </summary>
@@ -230,10 +230,10 @@ public class Monster : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
-        if (!_holdObject) Debug.LogError("Must have a HoldObject", this);
+		if (!_holdObject) Debug.LogError("Must have a HoldObject", this);
 
-        // Set rumble thresholds.
-        _timeBetweenRumbles = _actionQueue.FailTimer * .25f;
+		// Set rumble thresholds.
+		_timeBetweenRumbles = _actionQueue.FailTimer * .25f;
 
 		// Start timers.
 		_actionTimer = new Timer(_actionQueue.FailTimer);
@@ -360,17 +360,17 @@ public class Monster : MonoBehaviour
 		if (actionProperties == null)
 			return;
 
-        Debug.Log(actionProperties.ActionType + "==" + actionType + " && " + actionProperties.HotSpotLocation + "==" + hotSpot + " && " + actionProperties.holdableType + "==" + _holdObject.currentObject.holdableType);
+		//Debug.Log(actionProperties.ActionType + "==" + actionType + " && " + actionProperties.HotSpotLocation + "==" + hotSpot + " && " + actionProperties.holdableType + "==" + _holdObject.currentObject.holdableType);
 
-        if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot && actionProperties.holdableType == _holdObject.currentObject.holdableType)
-        {
-            if (actionProperties.ActionType == ActionType.DragAndDrop)
-            {
-                _holdObject.DropObject();
-            }
+		if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot && actionProperties.holdableType == _holdObject.currentObject.holdableType)
+		{
+			if (actionProperties.ActionType == ActionType.DragAndDrop)
+			{
+				_holdObject.DropObject();
+			}
 
-            // Succes!
-            PlayAudio(actionProperties.AudioToPlayOnSucces);
+			// Succes!
+			PlayAudio(actionProperties.AudioToPlayOnSucces);
 
 			AnimationHelper.UpdateAnimation(actionProperties.AnimationTypeOnSucces, 3f);
 
@@ -590,9 +590,9 @@ public class Monster : MonoBehaviour
 			case AudioType.Pincer:
 				return _pincerSound;
 
-            case AudioType.NailFiling:
-                return _nailFilingSound;
-        }
+			case AudioType.NailFiling:
+				return _nailFilingSound;
+		}
 	}
 	#endregion
 
