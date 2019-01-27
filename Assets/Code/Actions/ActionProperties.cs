@@ -28,5 +28,18 @@ public class ActionProperties : ScriptableObject
 	/// </summary>
 	[Tooltip("Audio that is played when the action was succesful.")]
 	public AudioType AudioToPlayOnSucces = AudioType.None;
+
+	[Header("Animations")]
+	/// <summary>
+	/// Animation to play to indicate the action.
+	/// </summary>
+	[Tooltip("Animation to play to indicate the action")]
+	public AnimationType AnimationTypeToIndicate = AnimationType.None;
+
+	/// <summary>
+	/// Animation to play on succes.
+	/// </summary>
+	[Tooltip("Animation to play on succes.")]
+	public AnimationType AnimationTypeOnSucces = AnimationType.None;
 	#endregion
 }

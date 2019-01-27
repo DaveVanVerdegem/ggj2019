@@ -310,6 +310,8 @@ public class Monster : MonoBehaviour
 			// Succes!
 			PlayAudio(actionProperties.AudioToPlayOnSucces);
 
+			AnimationHelper.UpdateAnimation(actionProperties.AnimationTypeOnSucces, 3f);
+
 			Iterate();
 		}
 		else if (actionProperties.HotSpotLocation == hotSpot)
@@ -318,6 +320,7 @@ public class Monster : MonoBehaviour
 		}
 		else
 		{
+			AnimationHelper.UpdateAnimation(AnimationType.Angry, 3f);
 			Escalate();
 		}
 	}
@@ -408,6 +411,7 @@ public class Monster : MonoBehaviour
 		// Set new hot spot.
 		_currentlyActiveHotSpot = newHotSpot;
 		IndicateHotSpot(_currentlyActiveHotSpot);
+		AnimationHelper.UpdateDefaultAnimation(actionProperties.AnimationTypeToIndicate);
 	}
 
 	public void UpdateAnimation()
