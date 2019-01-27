@@ -14,6 +14,8 @@ public class Rubable : MonoBehaviour
     public float speed = 200;
     [Tooltip("Maximum rubable angle in degrees")]
     public float maxAngle = 15;
+    [Tooltip("Pivot point at top")]
+    public bool pivotAtTop = true;
 
     Collider2D col;
     Vector3 rotateDirection;
@@ -47,7 +49,7 @@ public class Rubable : MonoBehaviour
                     if (touches[touchIndex].phase == TouchPhase.Moved)
                     {
                         float newAngle = Mathf.Clamp(Mathf.Rad2Deg * (touches[touchIndex].deltaPosition.sqrMagnitude * Mathf.Sign(-touches[touchIndex].deltaPosition.x)), -maxAngle, maxAngle);
-                        targetRotation = Quaternion.Euler(new Vector3(originalRotation.x, originalRotation.y, newAngle));
+                        targetRotation = Quaternion.Euler(new Vector3(originalRotation.x, originalRotation.y, pivotAtTop? -newAngle: newAngle));
                     }
                 }
             }
