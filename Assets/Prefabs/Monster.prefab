@@ -54,7 +54,6 @@ MonoBehaviour:
     type: 3}
   _angrySound: {fileID: 5740573572664769627}
   _happySound: {fileID: 0}
-  _actionQueue: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726, type: 2}
   _hotSpotTeeth:
     HotSpotHelper: {fileID: 5829418930777637265}
     Animation: 

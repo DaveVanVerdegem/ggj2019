@@ -5,16 +5,20 @@ using UnityEngine;
 /// <summary>
 /// The monster is hungry. Feed him food!
 /// </summary>
-public class MonsterIsHungry : MonoBehaviour
+public class MonsterIsHungry : MonoBehaviour, IMinigame
 {
 
     public GameObject monster;
 
     public ActionQueueProperties actionQueueProperties;
+    public int foodCount;
+
+    private MinigameManager minigameManager; // ugly but at least this one should work
 
     private Collider2D mouthCollider;
     private InputTrigger inputTrigger;
     private Monster monsterScript;
+    private int currentFoodCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +26,7 @@ public class MonsterIsHungry : MonoBehaviour
         //gameObject.AddComponent<Collider2D>(hotspot.GetComponent<Collider2D>());
         mouthCollider = GetComponent<Collider2D>();
         monsterScript = monster.GetComponent<Monster>();
+        minigameManager = GetComponentInParent<MinigameManager>();
     }
 
     // Update is called once per frame
@@ -33,19 +38,27 @@ public class MonsterIsHungry : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("in collider", this);
-
         if (other.gameObject.CompareTag(Tags.FOOD))
         {
-            Debug.Log("Food in mouth!", this);
-            Destroy(other.gameObject);
-            monsterScript.RegisterAction(ActionType.DragAndDrop, HotSpotLocation.Teeth);
+            if(currentFoodCount < foodCount)
+            {
+                Debug.Log("The monster ate food.", this);
+                Destroy(other.gameObject);
+                monsterScript.RegisterAction(ActionType.DragAndDrop, HotSpotLocation.Teeth);
+                currentFoodCount++;
+            }
+            if(currentFoodCount >= foodCount)
+            {
+                minigameManager.CompleteCurrentMinigame();
+            }
         }
+
     }
 
-    //maybe this is not needed
-    //void CompleteMinigame()
-    //{
-    //    Debug.Log("The monster is fed and happy!", this);
-    //}
+    #region IMinigame methods
+    public ActionQueueProperties GetActionQueueProperties()
+    {
+        return actionQueueProperties;
+    }
+    #endregion
 }

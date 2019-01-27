@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(Collider2D))]
 public class Rubable : MonoBehaviour
 {
     [Tooltip("Optional log output")]
@@ -15,7 +15,7 @@ public class Rubable : MonoBehaviour
     [Tooltip("Maximum rubable angle in degrees")]
     public float maxAngle = 15;
 
-    CircleCollider2D col;
+    Collider2D col;
     Vector3 rotateDirection;
     Quaternion originalRotation;
     Quaternion targetRotation;
@@ -23,7 +23,7 @@ public class Rubable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        col = GetComponent<CircleCollider2D>();
+        col = GetComponent<Collider2D>();
         originalRotation = Quaternion.Euler(transform.eulerAngles);
         targetRotation = originalRotation;
     }
