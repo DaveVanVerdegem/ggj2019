@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActionType: 1
   HotSpotLocation: 1
-  Indicator: {fileID: 3870167896035498074, guid: 6e31a859100a15f4ba713a9710490d16,
+  Indicator: {fileID: 3870167896035498074, guid: 7e47ad9c3abc24ab6a6c10800fd56dbf,
     type: 3}
   AudioToPlayOnSucces: 3
