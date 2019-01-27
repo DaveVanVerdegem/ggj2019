@@ -16,3 +16,4 @@ MonoBehaviour:
   HotSpotLocation: 1
   Indicator: {fileID: 3870167896035498074, guid: 6e31a859100a15f4ba713a9710490d16,
     type: 3}
+  AudioToPlayOnSucces: 3

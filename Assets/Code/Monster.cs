@@ -46,6 +46,13 @@ public class Monster : MonoBehaviour
 	[SerializeField]
 	private RandomAudioClip _happySound = null;
 
+	/// <summary>
+	/// Eating audio clips
+	/// </summary>
+	[Tooltip("Eating audio clips")]
+	[SerializeField]
+	private RandomAudioClip _eatingSound = null;
+
 	[Header("Hot Spots")]
 	/// <summary>
 	/// Hot spot for the teeth of the monster.
@@ -301,6 +308,8 @@ public class Monster : MonoBehaviour
 		if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot)
 		{
 			// Succes!
+			PlayAudio(actionProperties.AudioToPlayOnSucces);
+
 			Iterate();
 		}
 		else if (actionProperties.HotSpotLocation == hotSpot)
@@ -478,6 +487,36 @@ public class Monster : MonoBehaviour
 			case HotSpotLocation.Tail:
 				return _hotSpotTail;
 		}
+	}
+
+	public RandomAudioClip ReturnMatchingAudio(AudioType audioType)
+	{
+		switch (audioType)
+		{
+			default:
+				return null;
+
+			case AudioType.Angry:
+				return _angrySound;
+
+			case AudioType.Happy:
+				return _happySound;
+
+			case AudioType.Eating:
+				return _eatingSound;
+		}
+	}
+	#endregion
+
+	#region Audio Methods
+	public void PlayAudio(AudioType audioType)
+	{
+		RandomAudioClip audioPlayer = ReturnMatchingAudio(audioType);
+
+		if (audioPlayer == null)
+			return;
+
+		audioPlayer.PlayRandomAudioClip();
 	}
 	#endregion
 
