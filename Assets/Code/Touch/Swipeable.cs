@@ -98,6 +98,9 @@ public class Swipeable : MonoBehaviour
 								log.text = "\n Swiped! \n" + GetDebugInfo(touch);
 
 							swipeCount++;
+
+							if (swipeCount == 15 && _theSwipeIsRight)
+								_inputTrigger.TriggerInput(ActionType.Swipe);
 						}
 						sinceLastSwipe = Time.time;
 					}
