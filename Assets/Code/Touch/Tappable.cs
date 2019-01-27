@@ -17,15 +17,16 @@ public class Tappable : MonoBehaviour
 
 	private InputTrigger _inputTrigger = null;
 
-	private float _lastTap = 0f;
+	private Swipeable _swipeable = null;
 
-	//private Timer _thresholdTimer = null;
+	private float _lastTap = 0f;
 
 	// Start is called before the first frame update
 	private void Start()
 	{
 		_collider2D = GetComponent<Collider2D>();
 		_inputTrigger = GetComponent<InputTrigger>();
+		_swipeable = GetComponent<Swipeable>();
 	}
 
 	// Update is called once per frame
@@ -41,8 +42,6 @@ public class Tappable : MonoBehaviour
 
 			if (_collider2D == Physics2D.OverlapPoint(touchPosition))
 			{
-				Debug.Log(Time.frameCount + " Tippy tap.");
-
 				_lastTap = Time.time;
 				_inputTrigger.TriggerInput(ActionType.Tap);
 			}

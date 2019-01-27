@@ -25,17 +25,25 @@ public class Swipeable : MonoBehaviour
 	/// </summary>
 	private PolygonCollider2D _collider = null;
 
+	private Monster _monster = null;
+
+	private HotSpotHelper _hotSpotHelper = null;
+
+	private InputTrigger _inputTrigger = null;
+
 	private float distanceSwiped;
 	private bool leftToRightSwiped;
 	private int swipeCount;
 	private float sinceLastSwipe;
 	private Touch touch;
 
-	private List<Swipe> _previousSwipes = new List<Swipe>();
-
 	private Swipe _lastSwipe = null;
 
 	private Swipe _averageSwipe = null;
+
+	private List<Swipe> _previousSwipes = new List<Swipe>();
+
+	private bool _theSwipeIsRight = false;
 	#endregion
 
 	#region Life Cycle
@@ -43,6 +51,10 @@ public class Swipeable : MonoBehaviour
 	private void Start()
 	{
 		_collider = GetComponent<PolygonCollider2D>();
+		_monster = GetComponentInParent<Monster>();
+		_hotSpotHelper = GetComponent<HotSpotHelper>();
+		_inputTrigger = GetComponent<InputTrigger>();
+
 		distanceSwiped = 0;
 		leftToRightSwiped = false;
 		swipeCount = 0;
@@ -54,7 +66,6 @@ public class Swipeable : MonoBehaviour
 	private void Update()
 	{
 		Touch[] touches = Input.touches;
-		//Debug.Log("touch -----------------------------------------");
 		for (int touchIndex = 0; touchIndex < touches.Length; touchIndex++)
 		{
 			Vector3 touchWorldPoint = Camera.main.ScreenToWorldPoint(new Vector3(touches[touchIndex].position.x, touches[touchIndex].position.y, 0));
@@ -74,6 +85,12 @@ public class Swipeable : MonoBehaviour
 						{
 							_lastSwipe = new Swipe(distanceSwiped, Time.time - sinceLastSwipe, leftToRightSwiped);
 							SaveSwipe(_lastSwipe);
+
+							_theSwipeIsRight = IsThisSwipeRight();
+
+							string animationToPlay = _theSwipeIsRight ? "Getting_Scratched" : "Angry_Idle";
+							_monster.AnimationHelper.UpdateAnimation(animationToPlay, 1f);
+
 							touch = touches[touchIndex];
 							distanceSwiped = 0;
 
@@ -81,6 +98,9 @@ public class Swipeable : MonoBehaviour
 								log.text = "\n Swiped! \n" + GetDebugInfo(touch);
 
 							swipeCount++;
+
+							if (swipeCount == 15 && _theSwipeIsRight)
+								_inputTrigger.TriggerInput(ActionType.Swipe);
 						}
 						sinceLastSwipe = Time.time;
 					}
@@ -124,10 +144,20 @@ public class Swipeable : MonoBehaviour
 		_previousSwipes.Add(swipe);
 
 		// Update average swipe.
-		float averageDistance = _previousSwipes.Sum(previousSwipe => previousSwipe.Distance);
-		float averageDuration = _previousSwipes.Sum(previousSwipe => previousSwipe.Duration);
+		float averageDistance = _previousSwipes.Sum(previousSwipe => previousSwipe.Distance) / _previousSwipes.Count;
+		float averageDuration = _previousSwipes.Sum(previousSwipe => previousSwipe.Duration) / _previousSwipes.Count;
 
 		_averageSwipe = new Swipe(averageDistance, averageDuration, false);
+	}
+
+	private bool IsThisSwipeRight()
+	{
+		ActionProperties actionProperties = _monster.ReturnCurrentActionProperties();
+
+		if (actionProperties == null)
+			return false;
+
+		return actionProperties.ActionType == ActionType.Swipe && actionProperties.HotSpotLocation == _hotSpotHelper.HotSpotLocation;
 	}
 }
 
