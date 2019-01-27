@@ -59,6 +59,9 @@ public class AnimationHelper : MonoBehaviour
 
 	public void UpdateAnimation(AnimationType animationType, float duration)
 	{
+		if (animationType == AnimationType.None)
+			return;
+
 		_skeletonAnimation.AnimationName = ReturnAnimation(animationType);
 
 		_timer = new Timer(duration);
@@ -74,6 +77,9 @@ public class AnimationHelper : MonoBehaviour
 
 	public void UpdateDefaultAnimation(AnimationType animationType)
 	{
+		if (animationType == AnimationType.None)
+			return;
+
 		_defaultAnimation = ReturnAnimation(animationType);
 
 		if (_timer == null)
