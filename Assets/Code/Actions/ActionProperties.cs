@@ -29,13 +29,10 @@ public class ActionProperties : ScriptableObject
     /// </summary>
     public GameObject Indicator = null;
 
-	//[Header("Swipe Properties")]
-	//public int NumberOfSwipes = 0;
-
-	//public float SwipeLength = 15f;
-
-	//public float MinimumSwipeSpeed = 0f;
-
-	//public float MaximumSwipeSpeed = 0f;
+	/// <summary>
+	/// Audio that is played when the action was succesful.
+	/// </summary>
+	[Tooltip("Audio that is played when the action was succesful.")]
+	public AudioType AudioToPlayOnSucces = AudioType.None;
 	#endregion
 }

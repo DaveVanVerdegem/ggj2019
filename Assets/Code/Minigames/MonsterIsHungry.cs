@@ -11,7 +11,6 @@ public class MonsterIsHungry : AbstractMinigame
     public GameObject monster;
 
     public ActionQueueProperties actionQueueProperties;
-    public int foodCount;
 
     /// <summary>
     /// Happy audio clips
@@ -25,6 +24,7 @@ public class MonsterIsHungry : AbstractMinigame
     private Collider2D mouthCollider;
     private InputTrigger inputTrigger;
     private Monster monsterScript;
+    private int foodCount;
     private int currentFoodCount = 0;
 
     // Start is called before the first frame update
@@ -34,6 +34,7 @@ public class MonsterIsHungry : AbstractMinigame
         mouthCollider = GetComponent<Collider2D>();
         monsterScript = monster.GetComponent<Monster>();
         minigameManager = GetComponentInParent<MinigameManager>();
+        foodCount = actionQueueProperties.Actions.Count;
     }
 
     // Update is called once per frame
@@ -53,12 +54,12 @@ public class MonsterIsHungry : AbstractMinigame
                 eatingSounds.PlayRandomAudioClip();
                 Destroy(other.gameObject);
                 monsterScript.RegisterAction(ActionType.DragAndDrop, HotSpotLocation.Teeth);
-                currentFoodCount++;
             }
             if(currentFoodCount >= foodCount)
             {
                 minigameManager.CompleteCurrentMinigame();
             }
+            currentFoodCount++;
         }
 
     }

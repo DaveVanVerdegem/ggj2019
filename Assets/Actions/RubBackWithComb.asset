@@ -17,3 +17,4 @@ MonoBehaviour:
   holdableType: 1
   Indicator: {fileID: 913300413437942980, guid: 4cc781bab9b04414db13a0365e1507c4,
     type: 3}
+  AudioToPlayOnSucces: 2

@@ -32,17 +32,10 @@ public class Monster : MonoBehaviour
 	[SerializeField]
 	private ActionQueueProperties _actionQueue = null;
 
-    /// <summary>
-    /// HoldObject, keep track of currently held object
-    /// </summary>
-    [Tooltip("HoldObject, keep track of currently held object")]
-    [SerializeField]
-    private HoldObject _holdObject = null;
-
-    /// <summary>
-    /// Angry audio clips
-    /// </summary>
-    [Tooltip("Angry audio clips")]
+	/// <summary>
+	/// Angry audio clips
+	/// </summary>
+	[Tooltip("Angry audio clips")]
 	[SerializeField]
 	private RandomAudioClip _angrySound = null;
 
@@ -52,6 +45,13 @@ public class Monster : MonoBehaviour
 	[Tooltip("Happy audio clips")]
 	[SerializeField]
 	private RandomAudioClip _happySound = null;
+
+	/// <summary>
+	/// Eating audio clips
+	/// </summary>
+	[Tooltip("Eating audio clips")]
+	[SerializeField]
+	private RandomAudioClip _eatingSound = null;
 
 	[Header("Hot Spots")]
 	/// <summary>
@@ -181,8 +181,6 @@ public class Monster : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
-        if (!_holdObject) Debug.LogError("Must have a HoldObject", this);
-
 		// Set rumble thresholds.
 		_timeBetweenRumbles = _actionQueue.FailTimer * .25f;
 
@@ -298,7 +296,7 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	/// <param name="actionType">Type of input used.</param>
 	/// <param name="hotSpot">Hot spot where the input was used on.</param>
-	public void RegisterAction(ActionType actionType, HotSpotLocation hotSpot   )
+	public void RegisterAction(ActionType actionType, HotSpotLocation hotSpot)
 	{
 		Debug.Log(string.Format("Registering input of {0} at {1}.", actionType, hotSpot), this);
 
@@ -307,12 +305,12 @@ public class Monster : MonoBehaviour
 		if (actionProperties == null)
 			return;
 
-        Debug.Log(actionProperties.ActionType + "==" + actionType + " && " + actionProperties.HotSpotLocation + "==" + hotSpot + " && " + actionProperties.holdableType + "==" + _holdObject.currentObject.holdableType);
+		if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot)
+		{
+			// Succes!
+			PlayAudio(actionProperties.AudioToPlayOnSucces);
 
-        if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot && actionProperties.holdableType == _holdObject.currentObject.holdableType)
-        {
-            // Succes!
-            Iterate();
+			Iterate();
 		}
 		else if (actionProperties.HotSpotLocation == hotSpot)
 		{
@@ -489,6 +487,36 @@ public class Monster : MonoBehaviour
 			case HotSpotLocation.Tail:
 				return _hotSpotTail;
 		}
+	}
+
+	public RandomAudioClip ReturnMatchingAudio(AudioType audioType)
+	{
+		switch (audioType)
+		{
+			default:
+				return null;
+
+			case AudioType.Angry:
+				return _angrySound;
+
+			case AudioType.Happy:
+				return _happySound;
+
+			case AudioType.Eating:
+				return _eatingSound;
+		}
+	}
+	#endregion
+
+	#region Audio Methods
+	public void PlayAudio(AudioType audioType)
+	{
+		RandomAudioClip audioPlayer = ReturnMatchingAudio(audioType);
+
+		if (audioPlayer == null)
+			return;
+
+		audioPlayer.PlayRandomAudioClip();
 	}
 	#endregion
 
