@@ -29,7 +29,7 @@ public class Tappable : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
-		if (Input.touchCount > 1)
+		if (Input.touchCount >0)
 		{
 			if (Time.time < _lastTap + _tapThreshold)
 				return;
