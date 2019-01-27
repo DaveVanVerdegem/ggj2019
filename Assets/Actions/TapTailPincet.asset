@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TapTailPincet
   m_EditorClassIdentifier: 
   ActionType: 1
-  HotSpotLocation: 1
-  holdableType: 0
+  HotSpotLocation: 4
+  holdableType: 4
   Indicator: {fileID: 3870167896035498074, guid: 7e47ad9c3abc24ab6a6c10800fd56dbf,
     type: 3}
-  AudioToPlayOnSucces: 3
+  AudioToPlayOnSucces: 2
