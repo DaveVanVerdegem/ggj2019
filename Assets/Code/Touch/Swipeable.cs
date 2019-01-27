@@ -8,8 +8,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PolygonCollider2D))]
 public class Swipeable : MonoBehaviour
 {
-	#region Inspector Fields
-	[Tooltip("Optional log output")]
+    #region Inspector Fields
+    [Tooltip("Optional log output")]
 	public Text log = null;
 	[Tooltip("Maximum seconds delay between 2 swipes that swipes are counted before resetting the swipe count")]
 	public float maxDelayBetweenSwipes = 0.5f;
@@ -17,6 +17,8 @@ public class Swipeable : MonoBehaviour
 	public int minDistanceForSwipe = 10;
 	[Tooltip("Swipe when dragging finger (instead of lifting finger)")]
 	public bool swipeDrag = false;
+    [Tooltip("Amount of swipes required for triggering")]
+    public int swipesRequiredForTrigger = 8;
 	#endregion
 
 	#region Fields
@@ -96,7 +98,7 @@ public class Swipeable : MonoBehaviour
 
 							swipeCount++;
 
-							if (swipeCount == 15 && _theSwipeIsRight)
+							if (swipeCount == swipesRequiredForTrigger && _theSwipeIsRight)
 								_inputTrigger.TriggerInput(ActionType.Swipe);
 						}
 						sinceLastSwipe = Time.time;

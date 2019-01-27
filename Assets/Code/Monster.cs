@@ -32,10 +32,17 @@ public class Monster : MonoBehaviour
 	[SerializeField]
 	private ActionQueueProperties _actionQueue = null;
 
-	/// <summary>
-	/// Angry audio clips
-	/// </summary>
-	[Tooltip("Angry audio clips")]
+    /// <summary>
+    /// HoldObject, keep track of currently held object
+    /// </summary>
+    [Tooltip("HoldObject, keep track of currently held object")]
+    [SerializeField]
+    private HoldObject _holdObject = null;
+
+    /// <summary>
+    /// Angry audio clips
+    /// </summary>
+    [Tooltip("Angry audio clips")]
 	[SerializeField]
 	private RandomAudioClip _angrySound = null;
 
@@ -174,6 +181,8 @@ public class Monster : MonoBehaviour
 	// Start is called before the first frame update
 	private void Start()
 	{
+        if (!_holdObject) Debug.LogError("Must have a HoldObject", this);
+
 		// Set rumble thresholds.
 		_timeBetweenRumbles = _actionQueue.FailTimer * .25f;
 
@@ -289,7 +298,7 @@ public class Monster : MonoBehaviour
 	/// </summary>
 	/// <param name="actionType">Type of input used.</param>
 	/// <param name="hotSpot">Hot spot where the input was used on.</param>
-	public void RegisterAction(ActionType actionType, HotSpotLocation hotSpot)
+	public void RegisterAction(ActionType actionType, HotSpotLocation hotSpot   )
 	{
 		Debug.Log(string.Format("Registering input of {0} at {1}.", actionType, hotSpot), this);
 
@@ -298,10 +307,12 @@ public class Monster : MonoBehaviour
 		if (actionProperties == null)
 			return;
 
-		if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot)
-		{
-			// Succes!
-			Iterate();
+        Debug.Log(actionProperties.ActionType + "==" + actionType + " && " + actionProperties.HotSpotLocation + "==" + hotSpot + " && " + actionProperties.holdableType + "==" + _holdObject.currentObject.holdableType);
+
+        if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot && actionProperties.holdableType == _holdObject.currentObject.holdableType)
+        {
+            // Succes!
+            Iterate();
 		}
 		else if (actionProperties.HotSpotLocation == hotSpot)
 		{
