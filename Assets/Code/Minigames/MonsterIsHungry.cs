@@ -13,6 +13,13 @@ public class MonsterIsHungry : AbstractMinigame
     public ActionQueueProperties actionQueueProperties;
     public int foodCount;
 
+    /// <summary>
+    /// Happy audio clips
+    /// </summary>
+    [Tooltip("Eating audio clips")]
+    [SerializeField]
+    private RandomAudioClip eatingSounds = null;
+
     private MinigameManager minigameManager; // ugly but at least this one should work
 
     private Collider2D mouthCollider;
@@ -43,6 +50,7 @@ public class MonsterIsHungry : AbstractMinigame
             if(currentFoodCount < foodCount)
             {
                 Debug.Log("The monster ate food.", this);
+                eatingSounds.PlayRandomAudioClip();
                 Destroy(other.gameObject);
                 monsterScript.RegisterAction(ActionType.DragAndDrop, HotSpotLocation.Teeth);
                 currentFoodCount++;
