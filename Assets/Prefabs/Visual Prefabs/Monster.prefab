@@ -94,7 +94,11 @@ MonoBehaviour:
   initialSkinName: 
   initialFlipX: 0
   initialFlipY: 0
-  separatorSlotNames: []
+  separatorSlotNames:
+  - Bed
+  - Vacht_Points
+  - BoundingBox_Buik
+  - BoundingBox_Rug
   zSpacing: 0
   useClipping: 1
   immutableTriangles: 0

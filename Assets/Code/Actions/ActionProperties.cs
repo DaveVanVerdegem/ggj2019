@@ -18,13 +18,13 @@ public class ActionProperties : ScriptableObject
 	[Tooltip("Hot spot location to use for this action.")]
 	public HotSpotLocation HotSpotLocation = HotSpotLocation.None;
 
-	[Header("Swipe Properties")]
-	public int NumberOfSwipes = 0;
+	//[Header("Swipe Properties")]
+	//public int NumberOfSwipes = 0;
 
-	public float SwipeLength = 15f;
+	//public float SwipeLength = 15f;
 
-	public float MinimumSwipeSpeed = 0f;
+	//public float MinimumSwipeSpeed = 0f;
 
-	public float MaximumSwipeSpeed = 0f;
+	//public float MaximumSwipeSpeed = 0f;
 	#endregion
 }

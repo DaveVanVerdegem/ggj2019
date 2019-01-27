@@ -1,4 +1,5 @@
-﻿using System;
+using Spine.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,13 @@ public enum EscalationLevel
 public class Monster : MonoBehaviour
 {
 	#region Inspector Fields
+	/// <summary>
+	/// Action queue to currently use for this monster.
+	/// </summary>
+	[Tooltip("Action queue to currently use for this monster.")]
+	[SerializeField]
+	private ActionQueueProperties _actionQueue = null;
+
 	/// <summary>
 	/// Prefab to indicate the current hotspot.
 	/// </summary>
@@ -36,13 +44,6 @@ public class Monster : MonoBehaviour
 	[Tooltip("Happy audio clips")]
 	[SerializeField]
 	private RandomAudioClip _happySound = null;
-
-	/// <summary>
-	/// Action queue to currently use for this monster.
-	/// </summary>
-	[Tooltip("Action queue to currently use for this monster.")]
-	[SerializeField]
-	private ActionQueueProperties _actionQueue = null;
 
 	[Header("Hot Spots")]
 	/// <summary>
@@ -72,14 +73,30 @@ public class Monster : MonoBehaviour
 	[Tooltip("Hot spot for the tail of the monster.")]
 	[SerializeField]
 	private HotSpot _hotSpotTail = null;
+
+	[Header("Animations")]
+	[SerializeField]
+	private string _animationEscalationNone = "";
+
+	[SerializeField]
+	private string _animationEscalationLow = "";
+
+	[SerializeField]
+	private string _animationEscalationMedium = "";
+
+	[SerializeField]
+	private string _animationEscalationHigh = "";
 	#endregion
 
 	#region Properties
+	[HideInInspector]
+	public AnimationHelper AnimationHelper = null;
+
 	[Header("Debug")]
 	/// <summary>
 	/// Escalation level where the monster is currently at.
 	/// </summary>
-	[HideInInspector]
+	//[HideInInspector]
 	public EscalationLevel MonsterEscalationLevel = 0;
 	#endregion
 
@@ -97,6 +114,12 @@ public class Monster : MonoBehaviour
 	private HotSpot _currentlyActiveHotSpot = null;
 
 	private GameObject _hotSpotIndicator = null;
+
+	/// <summary>
+	/// The skeleton animation of the monster.
+	/// </summary>
+	[Obsolete]
+	private SkeletonAnimation _skeletonAnimation;
 
 	#region Rumbler
 	/// <summary>
@@ -125,6 +148,9 @@ public class Monster : MonoBehaviour
 	private void Awake()
 	{
 		_rumbler = GetComponent<Rumbler>();
+		AnimationHelper = GetComponent<AnimationHelper>();
+
+		_skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
 	}
 
 	// Start is called before the first frame update
@@ -167,7 +193,8 @@ public class Monster : MonoBehaviour
 	public void Escalate()
 	{
 		_angrySound.PlayRandomAudioClip();
-		MonsterEscalationLevel++;
+
+		UpdateEscalation(true);
 
 		Debug.Log(string.Format("Monster escalates! It is now at level {0}.", MonsterEscalationLevel), this);
 
@@ -180,12 +207,16 @@ public class Monster : MonoBehaviour
 	public void Iterate()
 	{
 		_currentActionIndex++;
+		UpdateEscalation(false);
 
 		UpdateActiveHotSpot();
 
 		// Reset the action and rumble timer.
 		_actionTimer.Reset();
 		_rumbleTimer.Reset();
+
+		_rumbleEscalation = (EscalationLevel)Mathf.Clamp((int)_rumbleEscalation--, 0, 4);
+		UpdateAnimation();
 
 		if (_currentActionIndex >= _actionQueue.Actions.Count)
 		{
@@ -198,7 +229,6 @@ public class Monster : MonoBehaviour
 
 			// Stop the rumble timer.
 			_rumbleTimer = null;
-			_rumbleEscalation = 0;
 			_rumbler.StopTheRumble();
 
 			WinGame();
@@ -227,8 +257,11 @@ public class Monster : MonoBehaviour
 		if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot)
 		{
 			// Succes!
-			_actionTimer.Reset();
 			Iterate();
+		}
+		else if (actionProperties.HotSpotLocation == hotSpot)
+		{
+			return;
 		}
 		else
 		{
@@ -303,6 +336,8 @@ public class Monster : MonoBehaviour
 
 			_rumbler.StartRumbling(rumbleDelay);
 			_rumbleTimer = new Timer(_timeBetweenRumbles);
+
+			UpdateAnimation();
 		}
 	}
 
@@ -320,6 +355,45 @@ public class Monster : MonoBehaviour
 		// Set new hot spot.
 		_currentlyActiveHotSpot = newHotSpot;
 		IndicateHotSpot(_currentlyActiveHotSpot);
+	}
+
+	public void UpdateAnimation()
+	{
+		string animation = "";
+
+		switch (_rumbleEscalation)
+		{
+			default:
+			case EscalationLevel.None:
+				animation = _animationEscalationNone;
+				break;
+
+			case EscalationLevel.Low:
+				animation = _animationEscalationLow;
+				break;
+
+			case EscalationLevel.Medium:
+				animation = _animationEscalationMedium;
+				break;
+
+			case EscalationLevel.High:
+				animation = _animationEscalationHigh;
+				break;
+		}
+
+		_skeletonAnimation.AnimationName = animation;
+	}
+
+	public void UpdateEscalation(bool increment)
+	{
+		if (increment)
+			MonsterEscalationLevel++;
+		else
+			MonsterEscalationLevel--;
+
+		MonsterEscalationLevel = (EscalationLevel)Mathf.Clamp((int)MonsterEscalationLevel, 0, 4);
+
+		//UpdateAnimation();
 	}
 	#endregion
 
@@ -360,6 +434,13 @@ public class Monster : MonoBehaviour
 			case HotSpotLocation.Tail:
 				return _hotSpotTail;
 		}
+	}
+	#endregion
+
+	#region Setters
+	public void SetCurrentActionProperties(ActionQueueProperties actionQueueProperties)
+	{
+		_actionQueue = actionQueueProperties;
 	}
 	#endregion
 }
