@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5429023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,7 +145,6 @@ MonoBehaviour:
   monster: {fileID: 195385003}
   actionQueueProperties: {fileID: 11400000, guid: cca2d44e07bc049d8b7ca95580c84d99,
     type: 2}
-  foodCount: 3
   eatingSounds: {fileID: 0}
 --- !u!61 &5429024
 BoxCollider2D:
@@ -357,7 +356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &328189604
 Transform:
   m_ObjectHideFlags: 0
@@ -387,7 +386,6 @@ MonoBehaviour:
   monster: {fileID: 195385003}
   actionQueueProperties: {fileID: 11400000, guid: cca2d44e07bc049d8b7ca95580c84d99,
     type: 2}
-  foodCount: 2
   eatingSounds: {fileID: 848271578}
 --- !u!61 &328189606
 BoxCollider2D:
