@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6bed4fe9dd7a76469d6570765b91913, type: 3}
-  m_Name: RubBack
+  m_Name: RubBackWithComb
   m_EditorClassIdentifier: 
   ActionType: 3
   HotSpotLocation: 2
+  holdableType: 1
   Indicator: {fileID: 913300413437942980, guid: 4cc781bab9b04414db13a0365e1507c4,
     type: 3}
   AudioToPlayOnSucces: 2

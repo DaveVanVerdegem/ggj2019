@@ -18,10 +18,16 @@ public class ActionProperties : ScriptableObject
 	[Tooltip("Hot spot location to use for this action.")]
 	public HotSpotLocation HotSpotLocation = HotSpotLocation.None;
 
-	/// <summary>
-	/// Object used to indicate what interaction is needed here.
-	/// </summary>
-	public GameObject Indicator = null;
+    /// <summary>
+    /// Holdable type required for this action.
+    /// </summary>
+    [Tooltip("Holdable type required for this action.")]
+    public HoldableType holdableType = HoldableType.None;
+
+    /// <summary>
+    /// Object used to indicate what interaction is needed here.
+    /// </summary>
+    public GameObject Indicator = null;
 
 	/// <summary>
 	/// Audio that is played when the action was succesful.
