@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87c93bcbcbf1aff4fa0d7013fb6eccbb, type: 3}
-  m_Name: TestQueue
+  m_Name: Level1Queue
   m_EditorClassIdentifier: 
   FailTimer: 30
   Actions:
   - {fileID: 11400000, guid: ee04f8f6a6181ab4eac6acc95e01bcac, type: 2}
-  - {fileID: 11400000, guid: 32d67a2c38ca7ea4aa302b6bbf7a6753, type: 2}
   - {fileID: 11400000, guid: fd0b380fbedd390438d65b6dcbfaea9e, type: 2}
   - {fileID: 11400000, guid: 32d67a2c38ca7ea4aa302b6bbf7a6753, type: 2}
+  - {fileID: 11400000, guid: e8a2210872d594e4692e6849d9ab9101, type: 2}

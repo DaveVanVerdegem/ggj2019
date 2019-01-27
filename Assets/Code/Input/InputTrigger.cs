@@ -8,7 +8,8 @@ public enum HotSpotLocation
 	Teeth = 1,
 	Back = 2,
 	Tummy = 3,
-	Tail = 4
+    Tail = 4,
+    Horns = 5
 }
 
 public enum ActionType
