@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 614638918953838516}
   - component: {fileID: 163717374277235401}
   - component: {fileID: 5055908188725891836}
+  - component: {fileID: 1209833255832478951}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 360c84f05a14a794198ac394e2d0273f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actionQueue: {fileID: 11400000, guid: 4db828911e56d2f4b8616353156ab726, type: 2}
   _hotSpotIndicatorPrefab: {fileID: 3870167896035498074, guid: 6e31a859100a15f4ba713a9710490d16,
     type: 3}
   _angrySound: {fileID: 5740573572664769627}
@@ -70,6 +72,7 @@ MonoBehaviour:
   _animationEscalationLow: Awake_Idle
   _animationEscalationMedium: Angry_Idle
   _animationEscalationHigh: Angry_Idle
+  AnimationHelper: {fileID: 0}
   MonsterEscalationLevel: 0
 --- !u!114 &5055908188725891836
 MonoBehaviour:
@@ -81,6 +84,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddf003a7d1db2a5469cbc7186aeb19ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1209833255832478951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023708859665812949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99755686e9b2e84a80414b38090d1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3592884917943994983
