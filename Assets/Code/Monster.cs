@@ -24,12 +24,12 @@ public class Monster : MonoBehaviour
 	[SerializeField]
 	private ActionQueueProperties _actionQueue = null;
 
-	/// <summary>
-	/// Prefab to indicate the current hotspot.
-	/// </summary>
-	[Tooltip("Prefab to indicate the current hotspot.")]
-	[SerializeField]
-	private GameObject _hotSpotIndicatorPrefab = null;
+	///// <summary>
+	///// Prefab to indicate the current hotspot.
+	///// </summary>
+	//[Tooltip("Prefab to indicate the current hotspot.")]
+	//[SerializeField]
+	//private GameObject _hotSpotIndicatorPrefab = null;
 
 	/// <summary>
 	/// Angry audio clips
@@ -279,8 +279,7 @@ public class Monster : MonoBehaviour
 		if (hotSpot == null)
 			return;
 
-		if (_hotSpotIndicator == null)
-			_hotSpotIndicator = Instantiate(_hotSpotIndicatorPrefab);
+		_hotSpotIndicator = Instantiate(ReturnCurrentActionProperties().Indicator);
 
 		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotHelper.HotSpotLocation), this);
 
@@ -290,7 +289,8 @@ public class Monster : MonoBehaviour
 
 	public void HideHotSpotIndication(HotSpot hotSpot)
 	{
-		_hotSpotIndicator.SetActive(false);
+		//_hotSpotIndicator.SetActive(false);
+		Destroy(_hotSpotIndicator);
 	}
 	#endregion
 

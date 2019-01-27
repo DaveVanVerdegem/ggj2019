@@ -18,6 +18,11 @@ public class ActionProperties : ScriptableObject
 	[Tooltip("Hot spot location to use for this action.")]
 	public HotSpotLocation HotSpotLocation = HotSpotLocation.None;
 
+	/// <summary>
+	/// Object used to indicate what interaction is needed here.
+	/// </summary>
+	public GameObject Indicator = null;
+
 	//[Header("Swipe Properties")]
 	//public int NumberOfSwipes = 0;
 

@@ -14,7 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActionType: 3
   HotSpotLocation: 2
-  NumberOfSwipes: 0
-  SwipeLength: 15
-  MinimumSwipeSpeed: 0
-  MaximumSwipeSpeed: 0
+  Indicator: {fileID: 913300413437942980, guid: 4cc781bab9b04414db13a0365e1507c4,
+    type: 3}
