@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 6666829105229018611}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.0550001}
 --- !u!212 &6666829104722300141
 SpriteRenderer:
@@ -96,7 +96,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 1
 --- !u!114 &6666829104722300143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +144,7 @@ Transform:
   m_LocalScale: {x: 1.25, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 6666829105229018611}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -7.6400003}
 --- !u!212 &6666829105044152002
 SpriteRenderer:
@@ -209,7 +209,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 1
 --- !u!114 &6666829105044152004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ Transform:
   m_LocalScale: {x: 1.1, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 6666829105229018611}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6666829105106612535
 SpriteRenderer:
@@ -322,7 +322,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 1
 --- !u!114 &6666829105106612537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,12 +366,12 @@ Transform:
   m_LocalPosition: {x: -3.8517003, y: -5.4581003, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 6666829105044152005}
   - {fileID: 6666829105749020581}
   - {fileID: 6666829105106612538}
   - {fileID: 6666829105515472390}
   - {fileID: 6666829105799311834}
   - {fileID: 6666829104722300112}
-  - {fileID: 6666829105044152005}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -406,7 +406,7 @@ Transform:
   m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 6666829105229018611}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6666829105515472387
 SpriteRenderer:
@@ -471,7 +471,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 1
 --- !u!114 &6666829105515472389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,7 +519,7 @@ Transform:
   m_LocalScale: {x: 0.9375, y: 0.85, z: 1}
   m_Children: []
   m_Father: {fileID: 6666829105229018611}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9.725}
 --- !u!212 &6666829105749020578
 SpriteRenderer:
@@ -584,7 +584,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 1
 --- !u!114 &6666829105749020580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,7 +632,7 @@ Transform:
   m_LocalScale: {x: 1.2, y: 1.3, z: 1}
   m_Children: []
   m_Father: {fileID: 6666829105229018611}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -16.069}
 --- !u!212 &6666829105799311831
 SpriteRenderer:
@@ -697,7 +697,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.42
+  m_Radius: 1
 --- !u!114 &6666829105799311833
 MonoBehaviour:
   m_ObjectHideFlags: 0
