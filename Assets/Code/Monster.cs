@@ -254,11 +254,15 @@ public class Monster : MonoBehaviour
 			case GameState.Win:
 				// Display win screen.
 				Debug.Log("<color=green><b>Won the game!</b></color>");
+				GameCanvas.Instance.ShowWin();
+
 				break;
 
 			case GameState.Lose:
 				// Display lose screen.
 				Debug.Log("<color=red><b>Game over!</b></color>");
+				GameCanvas.Instance.ShowLose();
+
 				break;
 		}
 	}
@@ -370,7 +374,11 @@ public class Monster : MonoBehaviour
 		if (hotSpot == null)
 			return;
 
-		_hotSpotIndicator = Instantiate(ReturnCurrentActionProperties().Indicator);
+		GameObject indicator = ReturnCurrentActionProperties().Indicator;
+		if (indicator == null)
+			return;
+
+		_hotSpotIndicator = Instantiate(indicator);
 
 		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotHelper.HotSpotLocation), this);
 
