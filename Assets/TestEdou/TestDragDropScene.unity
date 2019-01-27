@@ -189,30 +189,6 @@ PrefabInstance:
       propertyPath: _holdObject
       value: 
       objectReference: {fileID: 4879232212329166540}
-    - target: {fileID: 395117615, guid: f9655831422af9047ac80a3219c6b486, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.048899665
-      objectReference: {fileID: 0}
-    - target: {fileID: 2126822253204210964, guid: f9655831422af9047ac80a3219c6b486,
-        type: 3}
-      propertyPath: _tapThreshold
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 689716310451124283, guid: f9655831422af9047ac80a3219c6b486,
-        type: 3}
-      propertyPath: _tapThreshold
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4413954700179720538, guid: f9655831422af9047ac80a3219c6b486,
-        type: 3}
-      propertyPath: _tapThreshold
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7245684293726495833, guid: f9655831422af9047ac80a3219c6b486,
-        type: 3}
-      propertyPath: _tapThreshold
-      value: 0.2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9655831422af9047ac80a3219c6b486, type: 3}
 --- !u!1001 &565868416
