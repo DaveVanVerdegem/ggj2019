@@ -7,11 +7,14 @@ public class Holdable : MonoBehaviour
 {
     public HoldableType holdableType;
 
+    private Vector3 originalPosition;
+
     Collider2D col;
     // Start is called before the first frame update
     void Start()
     {
         col = GetComponent<Collider2D>();
+        originalPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -27,5 +30,6 @@ public class Holdable : MonoBehaviour
     public void ReleasedBy(HoldObject holdObject)
     {
         Debug.Log(this.name + " released by " + holdObject.name);
+        transform.position = originalPosition;
     }
 }

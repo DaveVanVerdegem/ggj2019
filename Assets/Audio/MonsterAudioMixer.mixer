@@ -12,6 +12,7 @@ AudioMixerController:
   m_Snapshots:
   - {fileID: 24500006}
   - {fileID: 245727878582386018}
+  - {fileID: 245925860575254068}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -22,6 +23,7 @@ AudioMixerController:
     - e27535eee82f2b64fa6b58daa165a96f
     - f13d8477d9b320c428fb8dce49e376b2
     - 4f4ab7832a6031a4da536bf4f6debbc9
+    - a55b233baa3ed334b9fa9c5e74d756c5
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -37,6 +39,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: 243378508078251932}
   - {fileID: 243320790443611452}
+  - {fileID: 243831597465755504}
   m_Volume: eb6566a977dda5a46a2596825a6eb5d5
   m_Pitch: a3d7882be0ca8484fbccb90678df0e76
   m_Effects:
@@ -65,7 +68,7 @@ AudioMixerSnapshotController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Start
+  m_Name: Nice
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 5718ae3b19dcc25419e298f76c2287b5
   m_FloatValues:
@@ -109,6 +112,24 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243831597465755504
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AngryMusic
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: a55b233baa3ed334b9fa9c5e74d756c5
+  m_Children: []
+  m_Volume: 61509de3b9890674b879d54a3c00e1d6
+  m_Pitch: 5e65a879e0ae9c1499a30d94d2e294f9
+  m_Effects:
+  - {fileID: 244706463611400282}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!244 &244260663225817940
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -137,16 +158,47 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &244706463611400282
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: afcc355a5c870da4ea72de21e3ebf041
+  m_EffectName: Attenuation
+  m_MixLevel: fa203d7e18bb9d942a459920061ee45a
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!245 &245727878582386018
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Snapshot - Copy
+  m_Name: Angry1
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 220bcb148f1fc8e43b403d2f7fdbe027
   m_FloatValues:
+    61509de3b9890674b879d54a3c00e1d6: 2.090601
+    b5e73334d9a7aee4a96d68ddcfb979c4: -2.2889833
+    633dbc08449143d45a078bf3238e3e02: 0
+    eb6566a977dda5a46a2596825a6eb5d5: 0
+  m_TransitionOverrides: {}
+--- !u!245 &245925860575254068
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Angry2
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: e8108432927e3174da92d8a2254d2da7
+  m_FloatValues:
+    61509de3b9890674b879d54a3c00e1d6: 3.704152
+    b5e73334d9a7aee4a96d68ddcfb979c4: -4.9356413
     633dbc08449143d45a078bf3238e3e02: 0
     eb6566a977dda5a46a2596825a6eb5d5: 0
   m_TransitionOverrides: {}

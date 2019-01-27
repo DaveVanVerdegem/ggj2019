@@ -13,6 +13,8 @@ public class HoldObject : MonoBehaviour
 	public Transform holdingPoint = null;
 	#endregion
 
+    bool justDropped=false;
+
 	// Start is called before the first frame update
 	private void Start()
 	{
@@ -23,13 +25,14 @@ public class HoldObject : MonoBehaviour
 	// Update is called once per frame
 	private void Update()
 	{
+        if (justDropped) return;
 		Touch touch;
 		// Make the current object follow this
 		if (holdingObject)
 		{
 			currentObject.transform.position = holdingPoint.position;
-			if (Input.touchCount == 0) return;
-			touch = Input.GetTouch(0);
+            //if (Input.touchCount == 0) return;
+            //touch = Input.GetTouch(0);
 		}
 		if (Input.touchCount == 0) return;
 		touch = Input.GetTouch(0);
@@ -57,6 +60,11 @@ public class HoldObject : MonoBehaviour
 		}
 	}
 
+    private void LateUpdate()
+    {
+        justDropped = false;
+    }
+
 	// Returns true if new object could be held
 	public bool HoldAnObject(Holdable objectToHold)
 	{
@@ -76,6 +84,13 @@ public class HoldObject : MonoBehaviour
 		currentObject.ReleasedBy(this);
 		holdingObject = false;
 		currentObject = null;
-		return holdingObject;
+        return true;
+    }
+
+    // Returns true if new object could be held
+    public bool DropObject()
+    {
+        if (ReleaseAnObject()) justDropped = true;
+        return false;
 	}
 }

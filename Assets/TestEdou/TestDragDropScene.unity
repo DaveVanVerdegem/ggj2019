@@ -124,11 +124,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
-    - target: {fileID: 163717374277235401, guid: f9655831422af9047ac80a3219c6b486,
-        type: 3}
-      propertyPath: _holdObject
-      value: 
-      objectReference: {fileID: 4879232212329166540}
     - target: {fileID: 614638918953838516, guid: f9655831422af9047ac80a3219c6b486,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -189,10 +184,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 395117615, guid: f9655831422af9047ac80a3219c6b486, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.048899665
-      objectReference: {fileID: 0}
+    - target: {fileID: 163717374277235401, guid: f9655831422af9047ac80a3219c6b486,
+        type: 3}
+      propertyPath: _holdObject
+      value: 
+      objectReference: {fileID: 4879232212329166540}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9655831422af9047ac80a3219c6b486, type: 3}
 --- !u!1001 &565868416
