@@ -360,8 +360,13 @@ public class Monster : MonoBehaviour
 
         if (actionProperties.ActionType == actionType && actionProperties.HotSpotLocation == hotSpot && actionProperties.holdableType == _holdObject.currentObject.holdableType)
         {
-			// Succes!
-			PlayAudio(actionProperties.AudioToPlayOnSucces);
+            if (actionProperties.ActionType == ActionType.DragAndDrop)
+            {
+                _holdObject.ReleaseAnObject();
+            }
+
+            // Succes!
+            PlayAudio(actionProperties.AudioToPlayOnSucces);
 
 			AnimationHelper.UpdateAnimation(actionProperties.AnimationTypeOnSucces, 3f);
 
