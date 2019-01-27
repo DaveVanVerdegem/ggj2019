@@ -46,14 +46,49 @@ public class Monster : MonoBehaviour
 	[SerializeField]
 	private RandomAudioClip _happySound = null;
 
-	/// <summary>
-	/// Eating audio clips
-	/// </summary>
-	[Tooltip("Eating audio clips")]
+    /// <summary>
+    /// Hungry monster audio clips
+    /// </summary>
+    [Tooltip("Hungry monster audio clips")]
 	[SerializeField]
-	private RandomAudioClip _eatingSound = null;
+	private RandomAudioClip _hungrySound = null;
 
-	[Header("Hot Spots")]
+    /// <summary>
+    /// Satisfied monster audio clips
+    /// </summary>
+    [Tooltip("Satisfied monster audio clips")]
+    [SerializeField]
+    private RandomAudioClip _satisfiedSound = null;
+
+    /// <summary>
+    /// Eating audio clips
+    /// </summary>
+    [Tooltip("Eating audio clips")]
+    [SerializeField]
+    private RandomAudioClip _eatingSound = null;
+
+    /// <summary>
+    /// toothbrush audio clips
+    /// </summary>
+    [Tooltip("toothbrush audio clips")]
+    [SerializeField]
+    private RandomAudioClip _toothbrushSound = null;
+
+    /// <summary>
+    /// Combing audio clips
+    /// </summary>
+    [Tooltip("Combing audio clips")]
+    [SerializeField]
+    private RandomAudioClip _combingSound = null;
+
+    /// <summary>
+    /// Pincer audio clips
+    /// </summary>
+    [Tooltip("Pincer audio clips")]
+    [SerializeField]
+    private RandomAudioClip _pincerSound = null;
+
+    [Header("Hot Spots")]
 	/// <summary>
 	/// Hot spot for the teeth of the monster.
 	/// </summary>
@@ -310,6 +345,8 @@ public class Monster : MonoBehaviour
 			// Succes!
 			PlayAudio(actionProperties.AudioToPlayOnSucces);
 
+			AnimationHelper.UpdateAnimation(actionProperties.AnimationTypeOnSucces, 3f);
+
 			Iterate();
 		}
 		else if (actionProperties.HotSpotLocation == hotSpot)
@@ -318,6 +355,7 @@ public class Monster : MonoBehaviour
 		}
 		else
 		{
+			AnimationHelper.UpdateAnimation(AnimationType.Angry, 3f);
 			Escalate();
 		}
 	}
@@ -408,6 +446,7 @@ public class Monster : MonoBehaviour
 		// Set new hot spot.
 		_currentlyActiveHotSpot = newHotSpot;
 		IndicateHotSpot(_currentlyActiveHotSpot);
+		AnimationHelper.UpdateDefaultAnimation(actionProperties.AnimationTypeToIndicate);
 	}
 
 	public void UpdateAnimation()
@@ -502,9 +541,24 @@ public class Monster : MonoBehaviour
 			case AudioType.Happy:
 				return _happySound;
 
-			case AudioType.Eating:
+            case AudioType.Hungry:
+                return _hungrySound;
+
+            case AudioType.Satisfied:
+                return _satisfiedSound;
+
+            case AudioType.Eating:
 				return _eatingSound;
-		}
+
+            case AudioType.Toothbrush:
+                return _toothbrushSound;
+
+            case AudioType.Combing:
+                return _combingSound;
+
+            case AudioType.Pincer:
+                return _pincerSound;
+        }
 	}
 	#endregion
 

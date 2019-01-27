@@ -40,7 +40,7 @@ public class HoldObject : MonoBehaviour
             RaycastHit2D[] hits = Physics2D.RaycastAll(new Vector2(touchWorldPoint.x, touchWorldPoint.y), new Vector2(touchWorldPoint.x, touchWorldPoint.y));
             foreach (RaycastHit2D hit in hits)
             {
-                Debug.Log(this.name + " touching object name=" + hit.transform.name);
+                //Debug.Log(this.name + " touching object name=" + hit.transform.name);
                 Holdable holdable = hit.transform.GetComponent<Holdable>();
                 if (holdable)
                 {
