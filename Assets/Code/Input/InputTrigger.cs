@@ -35,11 +35,6 @@ public class InputTrigger : MonoBehaviour
 
 	#region Fields
 	/// <summary>
-	/// Attached monster component.
-	/// </summary>
-	private Monster _monster = null;
-
-	/// <summary>
 	/// Attached hot spot helper.
 	/// </summary>
 	private HotSpotHelper _hotSpotHelper = null;
@@ -49,11 +44,6 @@ public class InputTrigger : MonoBehaviour
 	// Start is called before the first frame update
 	private void Awake()
 	{
-		_monster = GetComponentInParent<Monster>();
-
-		if (_monster == null)
-			Debug.LogWarning("No monster component found.", this);
-
 		_hotSpotHelper = GetComponent<HotSpotHelper>();
 	}
 
@@ -66,7 +56,7 @@ public class InputTrigger : MonoBehaviour
 	#region Methods
 	public void TriggerInput(ActionType inputType)
 	{
-		_monster.RegisterAction(inputType, _hotSpotHelper.HotSpotLocation);
+		Monster.Instance.RegisterAction(inputType, _hotSpotHelper.HotSpotLocation);
 	}
 	#endregion
 

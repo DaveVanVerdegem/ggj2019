@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ActionType: 1
   HotSpotLocation: 1
-  Indicator: {fileID: 913300413437942980, guid: 4cc781bab9b04414db13a0365e1507c4,
+  Indicator: {fileID: 3870167896035498074, guid: 6e31a859100a15f4ba713a9710490d16,
     type: 3}

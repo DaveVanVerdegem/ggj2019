@@ -12,10 +12,10 @@ public class HotSpot
 	[Tooltip("Helper to manage this hot spot.")]
 	public HotSpotHelper HotSpotHelper = null;
 
-	/// <summary>
-	/// Name of the animation to play.
-	/// </summary>
-	[Tooltip("Name of the animation to play.")]
-	public string Animation = "";
+	///// <summary>
+	///// Name of the animation to play.
+	///// </summary>
+	//[Tooltip("Name of the animation to play.")]
+	//public string Animation = "";
 	#endregion
 }
