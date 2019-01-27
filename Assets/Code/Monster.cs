@@ -315,7 +315,6 @@ public class Monster : MonoBehaviour
 		_currentActionIndex++;
 		UpdateEscalation(false);
 
-		UpdateActiveHotSpot();
 
 		// Reset the action and rumble timer.
 		_actionTimer.Reset();
@@ -340,6 +339,8 @@ public class Monster : MonoBehaviour
 			WinGame();
 			return;
 		}
+
+		UpdateActiveHotSpot();
 
 		DisplayActionToTake();
 	}
