@@ -25,8 +25,6 @@ public class Swipeable : MonoBehaviour
 	/// </summary>
 	private PolygonCollider2D _collider = null;
 
-	private Monster _monster = null;
-
 	private HotSpotHelper _hotSpotHelper = null;
 
 	private InputTrigger _inputTrigger = null;
@@ -51,7 +49,6 @@ public class Swipeable : MonoBehaviour
 	private void Start()
 	{
 		_collider = GetComponent<PolygonCollider2D>();
-		_monster = GetComponentInParent<Monster>();
 		_hotSpotHelper = GetComponent<HotSpotHelper>();
 		_inputTrigger = GetComponent<InputTrigger>();
 
@@ -89,7 +86,7 @@ public class Swipeable : MonoBehaviour
 							_theSwipeIsRight = IsThisSwipeRight();
 
 							string animationToPlay = _theSwipeIsRight ? "Getting_Scratched" : "Angry_Idle";
-							_monster.AnimationHelper.UpdateAnimation(animationToPlay, 1f);
+							Monster.Instance.AnimationHelper.UpdateAnimation(animationToPlay, 1f);
 
 							touch = touches[touchIndex];
 							distanceSwiped = 0;
@@ -152,7 +149,7 @@ public class Swipeable : MonoBehaviour
 
 	private bool IsThisSwipeRight()
 	{
-		ActionProperties actionProperties = _monster.ReturnCurrentActionProperties();
+		ActionProperties actionProperties = Monster.Instance.ReturnCurrentActionProperties();
 
 		if (actionProperties == null)
 			return false;

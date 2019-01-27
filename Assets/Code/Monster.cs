@@ -12,6 +12,14 @@ public enum EscalationLevel
 	Medium = 2,
 	High = 3
 }
+
+public enum GameState
+{
+	Menu = 0,
+	Playing = 1,
+	Win = 2,
+	Lose = 3
+}
 #endregion
 
 public class Monster : MonoBehaviour
@@ -23,13 +31,6 @@ public class Monster : MonoBehaviour
 	[Tooltip("Action queue to currently use for this monster.")]
 	[SerializeField]
 	private ActionQueueProperties _actionQueue = null;
-
-	/// <summary>
-	/// Prefab to indicate the current hotspot.
-	/// </summary>
-	[Tooltip("Prefab to indicate the current hotspot.")]
-	[SerializeField]
-	private GameObject _hotSpotIndicatorPrefab = null;
 
 	/// <summary>
 	/// Angry audio clips
@@ -89,6 +90,16 @@ public class Monster : MonoBehaviour
 	#endregion
 
 	#region Properties
+	/// <summary>
+	/// Static reference to the monster prefab.
+	/// </summary>
+	public static Monster Instance = null;
+
+	public GameState GameState
+	{
+		get { return _gameState; }
+	}
+
 	[HideInInspector]
 	public AnimationHelper AnimationHelper = null;
 
@@ -96,11 +107,13 @@ public class Monster : MonoBehaviour
 	/// <summary>
 	/// Escalation level where the monster is currently at.
 	/// </summary>
-	//[HideInInspector]
+	[HideInInspector]
 	public EscalationLevel MonsterEscalationLevel = 0;
 	#endregion
 
 	#region Fields
+	private GameState _gameState = GameState.Playing;
+
 	/// <summary>
 	/// Timer for this monster.
 	/// </summary>
@@ -147,6 +160,11 @@ public class Monster : MonoBehaviour
 	#region Life Cycle
 	private void Awake()
 	{
+		if (Instance == null)
+			Instance = this;
+		else
+			Destroy(gameObject);
+
 		_rumbler = GetComponent<Rumbler>();
 		AnimationHelper = GetComponent<AnimationHelper>();
 
@@ -177,14 +195,40 @@ public class Monster : MonoBehaviour
 	#endregion
 
 	#region Game Loop
+	public void UpdateState(GameState gameState)
+	{
+		if (GameState == GameState.Win || GameState == GameState.Lose)
+		{
+			return;
+		}
+
+		_gameState = gameState;
+
+		switch (GameState)
+		{
+			default:
+				break;
+
+			case GameState.Win:
+				// Display win screen.
+				Debug.Log("<color=green><b>Won the game!</b></color>");
+				break;
+
+			case GameState.Lose:
+				// Display lose screen.
+				Debug.Log("<color=red><b>Game over!</b></color>");
+				break;
+		}
+	}
+
 	public void WinGame()
 	{
-		Debug.Log("<color=green><b>Won the game!</b></color>");
+		UpdateState(GameState.Win);
 	}
 
 	public void LoseGame()
 	{
-		Debug.Log("<color=red><b>Game over!</b></color>");
+		UpdateState(GameState.Lose);
 	}
 
 	/// <summary>
@@ -279,8 +323,7 @@ public class Monster : MonoBehaviour
 		if (hotSpot == null)
 			return;
 
-		if (_hotSpotIndicator == null)
-			_hotSpotIndicator = Instantiate(_hotSpotIndicatorPrefab);
+		_hotSpotIndicator = Instantiate(ReturnCurrentActionProperties().Indicator);
 
 		Debug.Log(string.Format("Hot spot {0} is active now.", hotSpot.HotSpotHelper.HotSpotLocation), this);
 
@@ -290,7 +333,8 @@ public class Monster : MonoBehaviour
 
 	public void HideHotSpotIndication(HotSpot hotSpot)
 	{
-		_hotSpotIndicator.SetActive(false);
+		//_hotSpotIndicator.SetActive(false);
+		Destroy(_hotSpotIndicator);
 	}
 	#endregion
 
