@@ -3,6 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#region Enums
+public enum AnimationType
+{
+	None = 0,
+	Angry = 1,
+	Scratching = 2,
+	Eating = 3,
+	Hungry = 4,
+	Idle = 5
+}
+#endregion
+
 public class AnimationHelper : MonoBehaviour
 {
 	#region Fields
@@ -45,6 +57,16 @@ public class AnimationHelper : MonoBehaviour
 		_timer = new Timer(duration);
 	}
 
+	public void UpdateAnimation(AnimationType animationType, float duration)
+	{
+		if (animationType == AnimationType.None)
+			return;
+
+		_skeletonAnimation.AnimationName = ReturnAnimation(animationType);
+
+		_timer = new Timer(duration);
+	}
+
 	public void UpdateDefaultAnimation(string animation)
 	{
 		_defaultAnimation = animation;
@@ -52,5 +74,41 @@ public class AnimationHelper : MonoBehaviour
 		if (_timer == null)
 			_skeletonAnimation.AnimationName = _defaultAnimation;
 	}
+
+	public void UpdateDefaultAnimation(AnimationType animationType)
+	{
+		if (animationType == AnimationType.None)
+			return;
+
+		_defaultAnimation = ReturnAnimation(animationType);
+
+		if (_timer == null)
+			_skeletonAnimation.AnimationName = _defaultAnimation;
+	}
 	#endregion
+
+	public string ReturnAnimation(AnimationType animationType)
+	{
+		switch (animationType)
+		{
+			default:
+			case AnimationType.None:
+				return "";
+
+			case AnimationType.Angry:
+				return "Angry_Idle";
+
+			case AnimationType.Eating:
+				return "Eating";
+
+			case AnimationType.Scratching:
+				return "Getting_Scratched";
+
+			case AnimationType.Hungry:
+				return "Awake_Hungry";
+
+			case AnimationType.Idle:
+				return "Sleep_Idle";
+		}
+	}
 }
