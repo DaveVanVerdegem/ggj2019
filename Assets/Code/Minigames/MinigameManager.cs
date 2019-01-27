@@ -13,15 +13,15 @@ public class MinigameManager : MonoBehaviour
 	// Start is called before the first frame update
 	private void Awake()
 	{
-        //disable all minigames, except first if they are not disabled yet. 
-        // so no multiple minigames are active at the sme time
-        EnableOnlyFirstMinigame();
+		//disable all minigames, except first if they are not disabled yet.
+		// so no multiple minigames are active at the sme time
+		EnableOnlyFirstMinigame();
 
 		monster.SetCurrentActionProperties(minigames[currentMinigameIndex].GetActionQueueProperties());
-    }
+	}
 
-    // Update is called once per frame
-    private void Update()
+	// Update is called once per frame
+	private void Update()
 	{
 	}
 
@@ -41,12 +41,12 @@ public class MinigameManager : MonoBehaviour
 		}
 	}
 
-    private void EnableOnlyFirstMinigame()
-    {
-        foreach (AbstractMinigame minigame in minigames)
-        {
-            minigame.gameObject.SetActive(false);
-        }
-        minigames[0].gameObject.SetActive(true);
-    }
+	private void EnableOnlyFirstMinigame()
+	{
+		foreach (AbstractMinigame minigame in minigames)
+		{
+			minigame.gameObject.SetActive(false);
+		}
+		minigames[0].gameObject.SetActive(true);
+	}
 }
