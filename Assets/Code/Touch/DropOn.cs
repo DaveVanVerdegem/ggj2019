@@ -22,18 +22,19 @@ public class DropOn : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.touchCount > 1)
-        {
-            Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Ended)
+        Touch[] touches = Input.touches;
+        for (int touchIndex = 0; touchIndex < touches.Length; touchIndex++)
+        { 
+            if (touches[touchIndex].phase == TouchPhase.Ended)
             {
-                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(touch.position);
+                Vector3 worldPoint = Camera.main.ScreenToWorldPoint(touches[touchIndex].position);
                 Vector2 touchPosition = new Vector2(worldPoint.x, worldPoint.y);
 
-                if (_collider2D == Physics2D.OverlapPoint(touchPosition))
+                if (_collider2D.OverlapPoint(touchPosition))
                 {
                     _lastTap = Time.time;
                     _inputTrigger.TriggerInput(ActionType.DragAndDrop);
+                    return;
                 }
             }
         }

@@ -67,7 +67,7 @@ public class Swipeable : MonoBehaviour
 		Touch[] touches = Input.touches;
 		for (int touchIndex = 0; touchIndex < touches.Length; touchIndex++)
 		{
-			Vector3 touchWorldPoint = Camera.main.ScreenToWorldPoint(new Vector3(touches[touchIndex].position.x, touches[touchIndex].position.y, 0));
+			Vector3 touchWorldPoint = Camera.main.ScreenToWorldPoint(touches[touchIndex].position);
 
 			//if (log) log.text = "\n col.bounds " + col.bounds+ "\n touches[touchIndex].position " + touches[touchIndex].position + "\n touchWorldPoint " + touchWorldPoint;
 

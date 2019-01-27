@@ -10,7 +10,7 @@ public class Tappable : MonoBehaviour
 	/// </summary>
 	[Tooltip("Threshold to prevent multiple taps.")]
 	[SerializeField]
-	private float _tapThreshold = 1f;
+	private float _tapThreshold = 0.2f;
 	#endregion
 
 	private Collider2D _collider2D = null;
@@ -39,7 +39,7 @@ public class Tappable : MonoBehaviour
                 Vector3 worldPoint = Camera.main.ScreenToWorldPoint(touch.position);
                 Vector2 touchPosition = new Vector2(worldPoint.x, worldPoint.y);
 
-                if (_collider2D == Physics2D.OverlapPoint(touchPosition))
+                if (_collider2D.OverlapPoint(touchPosition))
                 {
                     _lastTap = Time.time;
                     _inputTrigger.TriggerInput(ActionType.Tap);
