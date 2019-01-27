@@ -88,7 +88,14 @@ public class Monster : MonoBehaviour
 	[SerializeField]
 	private RandomAudioClip _pincerSound = null;
 
-	[Header("Hot Spots")]
+    /// <summary>
+    /// Nail filing audio clips
+    /// </summary>
+    [Tooltip("Nail filing audio clips")]
+    [SerializeField]
+    private RandomAudioClip _nailFilingSound = null;
+
+    [Header("Hot Spots")]
 	/// <summary>
 	/// Hot spot for the teeth of the monster.
 	/// </summary>
@@ -558,7 +565,10 @@ public class Monster : MonoBehaviour
 
 			case AudioType.Pincer:
 				return _pincerSound;
-		}
+
+            case AudioType.NailFiling:
+                return _nailFilingSound;
+        }
 	}
 	#endregion
 

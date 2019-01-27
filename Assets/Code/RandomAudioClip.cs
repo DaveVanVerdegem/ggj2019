@@ -14,6 +14,7 @@ public enum AudioType
     Toothbrush,
     Combing,
     Pincer,
+    NailFiling,
 }
 #endregion
 
