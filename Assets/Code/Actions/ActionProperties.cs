@@ -18,13 +18,34 @@ public class ActionProperties : ScriptableObject
 	[Tooltip("Hot spot location to use for this action.")]
 	public HotSpotLocation HotSpotLocation = HotSpotLocation.None;
 
-	[Header("Swipe Properties")]
-	public int NumberOfSwipes = 0;
+    /// <summary>
+    /// Holdable type required for this action.
+    /// </summary>
+    [Tooltip("Holdable type required for this action.")]
+    public HoldableType holdableType = HoldableType.None;
 
-	public float SwipeLength = 15f;
+    /// <summary>
+    /// Object used to indicate what interaction is needed here.
+    /// </summary>
+    public GameObject Indicator = null;
 
-	public float MinimumSwipeSpeed = 0f;
+	/// <summary>
+	/// Audio that is played when the action was succesful.
+	/// </summary>
+	[Tooltip("Audio that is played when the action was succesful.")]
+	public AudioType AudioToPlayOnSucces = AudioType.None;
 
-	public float MaximumSwipeSpeed = 0f;
+	[Header("Animations")]
+	/// <summary>
+	/// Animation to play to indicate the action.
+	/// </summary>
+	[Tooltip("Animation to play to indicate the action")]
+	public AnimationType AnimationTypeToIndicate = AnimationType.None;
+
+	/// <summary>
+	/// Animation to play on succes.
+	/// </summary>
+	[Tooltip("Animation to play on succes.")]
+	public AnimationType AnimationTypeOnSucces = AnimationType.None;
 	#endregion
 }

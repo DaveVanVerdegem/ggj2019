@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FailTimer: 30
   Actions:
-  - {fileID: 11400000, guid: 0ca2377c39c76d24395b1a1ee242cbde, type: 2}
+  - {fileID: 11400000, guid: ee04f8f6a6181ab4eac6acc95e01bcac, type: 2}
   - {fileID: 11400000, guid: 32d67a2c38ca7ea4aa302b6bbf7a6753, type: 2}
-  - {fileID: 11400000, guid: 0ca2377c39c76d24395b1a1ee242cbde, type: 2}
+  - {fileID: 11400000, guid: fd0b380fbedd390438d65b6dcbfaea9e, type: 2}
+  - {fileID: 11400000, guid: 32d67a2c38ca7ea4aa302b6bbf7a6753, type: 2}

@@ -8,8 +8,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PolygonCollider2D))]
 public class Swipeable : MonoBehaviour
 {
-	#region Inspector Fields
-	[Tooltip("Optional log output")]
+    #region Inspector Fields
+    [Tooltip("Optional log output")]
 	public Text log = null;
 	[Tooltip("Maximum seconds delay between 2 swipes that swipes are counted before resetting the swipe count")]
 	public float maxDelayBetweenSwipes = 0.5f;
@@ -17,6 +17,8 @@ public class Swipeable : MonoBehaviour
 	public int minDistanceForSwipe = 10;
 	[Tooltip("Swipe when dragging finger (instead of lifting finger)")]
 	public bool swipeDrag = false;
+    [Tooltip("Amount of swipes required for triggering")]
+    public int swipesRequiredForTrigger = 8;
 	#endregion
 
 	#region Fields
@@ -25,17 +27,23 @@ public class Swipeable : MonoBehaviour
 	/// </summary>
 	private PolygonCollider2D _collider = null;
 
+	private HotSpotHelper _hotSpotHelper = null;
+
+	private InputTrigger _inputTrigger = null;
+
 	private float distanceSwiped;
 	private bool leftToRightSwiped;
 	private int swipeCount;
 	private float sinceLastSwipe;
 	private Touch touch;
 
-	private List<Swipe> _previousSwipes = new List<Swipe>();
-
 	private Swipe _lastSwipe = null;
 
 	private Swipe _averageSwipe = null;
+
+	private List<Swipe> _previousSwipes = new List<Swipe>();
+
+	private bool _theSwipeIsRight = false;
 	#endregion
 
 	#region Life Cycle
@@ -43,6 +51,9 @@ public class Swipeable : MonoBehaviour
 	private void Start()
 	{
 		_collider = GetComponent<PolygonCollider2D>();
+		_hotSpotHelper = GetComponent<HotSpotHelper>();
+		_inputTrigger = GetComponent<InputTrigger>();
+
 		distanceSwiped = 0;
 		leftToRightSwiped = false;
 		swipeCount = 0;
@@ -54,10 +65,9 @@ public class Swipeable : MonoBehaviour
 	private void Update()
 	{
 		Touch[] touches = Input.touches;
-		//Debug.Log("touch -----------------------------------------");
 		for (int touchIndex = 0; touchIndex < touches.Length; touchIndex++)
 		{
-			Vector3 touchWorldPoint = Camera.main.ScreenToWorldPoint(new Vector3(touches[touchIndex].position.x, touches[touchIndex].position.y, 0));
+			Vector3 touchWorldPoint = Camera.main.ScreenToWorldPoint(touches[touchIndex].position);
 
 			//if (log) log.text = "\n col.bounds " + col.bounds+ "\n touches[touchIndex].position " + touches[touchIndex].position + "\n touchWorldPoint " + touchWorldPoint;
 
@@ -74,6 +84,12 @@ public class Swipeable : MonoBehaviour
 						{
 							_lastSwipe = new Swipe(distanceSwiped, Time.time - sinceLastSwipe, leftToRightSwiped);
 							SaveSwipe(_lastSwipe);
+
+							_theSwipeIsRight = IsThisSwipeRight();
+
+							string animationToPlay = _theSwipeIsRight ? "Getting_Scratched" : "Angry_Idle";
+							Monster.Instance.AnimationHelper.UpdateAnimation(animationToPlay, 1f);
+
 							touch = touches[touchIndex];
 							distanceSwiped = 0;
 
@@ -81,6 +97,9 @@ public class Swipeable : MonoBehaviour
 								log.text = "\n Swiped! \n" + GetDebugInfo(touch);
 
 							swipeCount++;
+
+							if (swipeCount == swipesRequiredForTrigger && _theSwipeIsRight)
+								_inputTrigger.TriggerInput(ActionType.Swipe);
 						}
 						sinceLastSwipe = Time.time;
 					}
@@ -124,10 +143,20 @@ public class Swipeable : MonoBehaviour
 		_previousSwipes.Add(swipe);
 
 		// Update average swipe.
-		float averageDistance = _previousSwipes.Sum(previousSwipe => previousSwipe.Distance);
-		float averageDuration = _previousSwipes.Sum(previousSwipe => previousSwipe.Duration);
+		float averageDistance = _previousSwipes.Sum(previousSwipe => previousSwipe.Distance) / _previousSwipes.Count;
+		float averageDuration = _previousSwipes.Sum(previousSwipe => previousSwipe.Duration) / _previousSwipes.Count;
 
 		_averageSwipe = new Swipe(averageDistance, averageDuration, false);
+	}
+
+	private bool IsThisSwipeRight()
+	{
+		ActionProperties actionProperties = Monster.Instance.ReturnCurrentActionProperties();
+
+		if (actionProperties == null)
+			return false;
+
+		return actionProperties.ActionType == ActionType.Swipe && actionProperties.HotSpotLocation == _hotSpotHelper.HotSpotLocation;
 	}
 }
 
